@@ -110,7 +110,7 @@ class _MainMenuState extends State<MainMenu> {
                           SizedBox(
                               height: 10.h,
                               child: Image.asset(
-                                  "images/advance_payment_logo.png")),
+                                  "images/advance_payment_logo-removebg.png")),
                         ],
                       ),
                     )),

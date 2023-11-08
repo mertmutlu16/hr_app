@@ -76,7 +76,8 @@ flutter:
     - images/events_logo-removebg.png
     - images/leave_req_logo-removebg.png
     - images/departments_logo-removebg.png
-    - images/advance_payment_logo.png
+    - images/advance_payment_logo-removebg.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

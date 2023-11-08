@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hr_app/main_screen/view/widgets/main_menu.dart';
+import 'package:hr_app/profile_screen/view/widgets/logout_button.dart';
+import 'package:hr_app/profile_screen/view/widgets/profile_card.dart';
+import 'package:hr_app/profile_screen/view/widgets/user_define.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
-class MainScreenView extends StatefulWidget {
-  const MainScreenView({super.key});
+class ProfileScreenView extends StatefulWidget {
+  const ProfileScreenView({super.key});
 
   @override
-  State<MainScreenView> createState() => _MainScreenViewState();
+  State<ProfileScreenView> createState() => _ProfileScreenViewState();
 }
 
-class _MainScreenViewState extends State<MainScreenView> {
+class _ProfileScreenViewState extends State<ProfileScreenView> {
 
-  int _selectedBottomNaviIndex =0;
+  int _selectedBottomNaviIndex =2;
  void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
@@ -31,7 +33,8 @@ class _MainScreenViewState extends State<MainScreenView> {
       
     });
   }
-  
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,59 +45,38 @@ class _MainScreenViewState extends State<MainScreenView> {
   }
 
   AppBar buildAppBar() {
-    String greeting = getGreeting();
     return AppBar(
-      leading: Padding(
-        padding:  EdgeInsets.only(left:2.5.h),
-        child: Image.asset("images/app_logo.png"),
-      ),
-      title: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            " $greeting ,",
-            style: TextStyle(
-                fontSize: 18.sp, color: const Color.fromARGB(1000, 241, 0, 77)),
-          ),
-          Text(
-            " Mert Mutlu ",
-            style: TextStyle(
-                fontSize: 14.sp, color: const Color.fromARGB(1000, 241, 0, 77)),
-          ),
-        ],
+      title: const Text(
+        "Profile",
+        style: TextStyle(fontWeight: FontWeight.bold ),
       ),
       centerTitle: true,
-      
+      leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: const Icon(Icons.arrow_back),
+      ),
     );
   }
 
-  String getGreeting() {
-    DateTime now = DateTime.now();
-    int hour = now.hour;
-    if (hour >= 6 && hour < 12) {
-      return 'Good Mornings ';
-    } else if (hour >= 12 && hour < 18) {
-      return 'Good Days';
-    } else {
-      return 'Good Evenings';
-    }
-  }
-
-  Widget buildBody() {
+  Widget buildBody(){
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(2.h),
-        child:  const Column(
+        padding:  EdgeInsets.all(2.h),
+        child:const  Column(
           children: [
-             MainMenu(),
+            UserDefine(),
+            ProfileCard(),
+            LogoutButton(),
           ],
         ),
       ),
     );
   }
 
-    
-Widget buildBottomNavigatonBar() {
+
+  Widget buildBottomNavigatonBar() {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -117,7 +99,4 @@ Widget buildBottomNavigatonBar() {
       onTap: _onItemTapped,
     );
   }
-
-
-
 }

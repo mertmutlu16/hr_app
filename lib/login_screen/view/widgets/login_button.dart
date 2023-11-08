@@ -14,11 +14,11 @@ class _LoginButtonState extends State<LoginButton> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(top : 43.5.h),
+      padding: EdgeInsets.only(top: 43.5.h),
       child: Column(
         children: [
           Padding(
-            padding:  EdgeInsets.only(bottom : 3.h),
+            padding: EdgeInsets.only(bottom: 3.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -27,25 +27,27 @@ class _LoginButtonState extends State<LoginButton> {
                   style: TextStyle(fontSize: 14.sp),
                 ),
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Get.toNamed(AppRoutes.SIGNUP_SCREEN_PATH);
                   },
                   child: Text(
                     " Sign up",
                     style: TextStyle(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.bold,
-                      color: const Color.fromARGB(1000, 241, 0, 77)
-                    ),
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.bold,
+                        color: const Color.fromARGB(1000, 241, 0, 77)),
                   ),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: EdgeInsets.only( bottom: 3.h),
+            padding: EdgeInsets.only(bottom: 3.h),
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamedUntil(
+                      AppRoutes.MAIN_SCREEN_PATH, (route) => false);
+                },
                 style: ElevatedButton.styleFrom(
                     minimumSize: Size(double.infinity, 8.h),
                     backgroundColor: const Color.fromARGB(1000, 241, 0, 77),

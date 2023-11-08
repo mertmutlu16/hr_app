@@ -14,7 +14,7 @@ class _SignupButtonState extends State<SignupButton> {
   @override
   Widget build(BuildContext context) {
    return Padding(
-      padding:  EdgeInsets.only(top : 10.h),
+      padding:  EdgeInsets.only(top : 7.h),
       child: Column(
         children: [
           Padding(

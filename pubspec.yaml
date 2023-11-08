@@ -73,6 +73,10 @@ flutter:
     - images/app_logo_new.png
     - images/logo_mor.png
     - images/golgeli.png
+    - images/events_logo-removebg.png
+    - images/leave_req_logo-removebg.png
+    - images/departments_logo-removebg.png
+    - images/advance_payment_logo.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

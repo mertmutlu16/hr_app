@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 class LoginScreenView extends StatefulWidget {
   const LoginScreenView({super.key});
 
+
   @override
   State<LoginScreenView> createState() => _LoginScreenViewState();
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -11,6 +14,41 @@ class LoginButton extends StatefulWidget {
 }
 
 class _LoginButtonState extends State<LoginButton> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    emailController = loginScreenViewModel.getEmailController();
+    passwordController = loginScreenViewModel.getPasswordController();
+
+    super.didChangeDependencies();
+  }
+
+  void _showEmptyFieldsAlert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: const Text('Warning'),
+          content:
+              const Text("Please enter the correct email and password."),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Get.back();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,18 +81,33 @@ class _LoginButtonState extends State<LoginButton> {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 3.h),
-            child: ElevatedButton(
-                onPressed: () {
-                  Get.offNamedUntil(
-                      AppRoutes.MAIN_SCREEN_PATH, (route) => false);
-                },
-                style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 8.h),
-                    backgroundColor: const Color.fromARGB(1000, 241, 0, 77),
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10))),
-                child: const Text("Sign in")),
+            child: Observer(
+              builder: (_) {
+                return ElevatedButton(
+                    onPressed: () async {
+                      if (emailController.text.isNotEmpty &&
+                          passwordController.text.isNotEmpty) {
+                        await loginScreenViewModel
+                            .getUser(emailController.text.toString(),
+                                passwordController.text.toString())
+                            .then((value) {});
+
+                        Get.offNamedUntil(
+                            AppRoutes.MAIN_SCREEN_PATH, (route) => false);
+                      }
+                      else{
+                        _showEmptyFieldsAlert();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: Size(double.infinity, 8.h),
+                        backgroundColor: const Color.fromARGB(1000, 241, 0, 77),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                    child: const Text("Sign in"));
+              },
+            ),
           )
         ],
       ),

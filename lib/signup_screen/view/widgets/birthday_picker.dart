@@ -13,6 +13,9 @@ class BirthdayPicker extends StatefulWidget {
 
 class _BirthdayPickerState extends State<BirthdayPicker> {
   DateTime? _selectedDate;
+  int? selectedDayInt;
+  int? selectedMonthInt;
+  int? selectedYearInt;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,7 @@ class _BirthdayPickerState extends State<BirthdayPicker> {
                   borderRadius: BorderRadius.circular(10))),
           child: _selectedDate != null
               ? Text(
-                  "Selected Date : ${_selectedDate!.day}-${_selectedDate!.month}-${_selectedDate!.year}")
+                  "Selected Date : $selectedDayInt-$selectedMonthInt-$selectedYearInt")
               : const Text("Select Date of Birth"),
           onPressed: () async {
             var datePicked = await DatePicker.showSimpleDatePicker(
@@ -44,6 +47,18 @@ class _BirthdayPickerState extends State<BirthdayPicker> {
             if (datePicked != null) {
               setState(() {
                 _selectedDate = datePicked;
+                selectedDayInt = datePicked.day;
+                selectedMonthInt = datePicked.month;
+                selectedYearInt = datePicked.year;
+
+                /*
+                print("$selectedDayInt - ${selectedDayInt.runtimeType}");
+                print("$selectedMonthInt "); 
+                print("${selectedMonthInt.runtimeType}");
+                print("$selectedYearInt - ${selectedYearInt.runtimeType}");
+                */
+                //print("${selectedMonthInt} - ${selectedMonthInt.runtimeType}");
+
               });
             }
           },

@@ -9,7 +9,7 @@ class UserVerificationApi {
       "Fullname": "",
       "Department": "",
       "PhoneNumber": "",
-      "BirthDay": 31,
+      "BirthDay": 1,
       "BirthMonth": 1,
       "BirthYear": 2001,
       "Password": password

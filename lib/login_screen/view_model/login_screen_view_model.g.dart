@@ -25,10 +25,79 @@ mixin _$LoginScreenViewModel on _LoginScreenViewModelBase, Store {
     });
   }
 
+  late final _$passwordTextControllerAtom = Atom(
+      name: '_LoginScreenViewModelBase.passwordTextController',
+      context: context);
+
+  @override
+  TextEditingController get passwordTextController {
+    _$passwordTextControllerAtom.reportRead();
+    return super.passwordTextController;
+  }
+
+  @override
+  set passwordTextController(TextEditingController value) {
+    _$passwordTextControllerAtom
+        .reportWrite(value, super.passwordTextController, () {
+      super.passwordTextController = value;
+    });
+  }
+
+  late final _$userAtom =
+      Atom(name: '_LoginScreenViewModelBase.user', context: context);
+
+  @override
+  Users? get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(Users? value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
+  late final _$getUserAsyncAction =
+      AsyncAction('_LoginScreenViewModelBase.getUser', context: context);
+
+  @override
+  Future<Users?> getUser(String email, String password) {
+    return _$getUserAsyncAction.run(() => super.getUser(email, password));
+  }
+
+  late final _$_LoginScreenViewModelBaseActionController =
+      ActionController(name: '_LoginScreenViewModelBase', context: context);
+
+  @override
+  TextEditingController getEmailController() {
+    final _$actionInfo = _$_LoginScreenViewModelBaseActionController
+        .startAction(name: '_LoginScreenViewModelBase.getEmailController');
+    try {
+      return super.getEmailController();
+    } finally {
+      _$_LoginScreenViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  TextEditingController getPasswordController() {
+    final _$actionInfo = _$_LoginScreenViewModelBaseActionController
+        .startAction(name: '_LoginScreenViewModelBase.getPasswordController');
+    try {
+      return super.getPasswordController();
+    } finally {
+      _$_LoginScreenViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-emailTextController: ${emailTextController}
+emailTextController: ${emailTextController},
+passwordTextController: ${passwordTextController},
+user: ${user}
     ''';
   }
 }

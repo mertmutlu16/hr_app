@@ -27,7 +27,7 @@ class _LoginButtonState extends State<LoginButton> {
     super.didChangeDependencies();
   }
 
-  void _showEmptyFieldsAlert() {
+  void _showAlert() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -96,7 +96,7 @@ class _LoginButtonState extends State<LoginButton> {
                             AppRoutes.MAIN_SCREEN_PATH, (route) => false);
                       }
                       else{
-                        _showEmptyFieldsAlert();
+                        _showAlert();
                       }
                     },
                     style: ElevatedButton.styleFrom(

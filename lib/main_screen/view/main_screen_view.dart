@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/main_screen/view/widgets/main_menu.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -12,9 +15,10 @@ class MainScreenView extends StatefulWidget {
 }
 
 class _MainScreenViewState extends State<MainScreenView> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
 
-  int _selectedBottomNaviIndex =0;
- void _onItemTapped(int index) {
+  int _selectedBottomNaviIndex = 0;
+  void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
 
@@ -23,15 +27,13 @@ class _MainScreenViewState extends State<MainScreenView> {
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
-        
+
           break;
         default:
       }
-      
-      
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +47,7 @@ class _MainScreenViewState extends State<MainScreenView> {
     String greeting = getGreeting();
     return AppBar(
       leading: Padding(
-        padding:  EdgeInsets.only(left:2.5.h),
+        padding: EdgeInsets.only(left: 2.5.h),
         child: Image.asset("images/app_logo.png"),
       ),
       title: Column(
@@ -56,15 +58,19 @@ class _MainScreenViewState extends State<MainScreenView> {
             style: TextStyle(
                 fontSize: 18.sp, color: const Color.fromARGB(1000, 241, 0, 77)),
           ),
-          Text(
-            " Mert Mutlu ",
-            style: TextStyle(
-                fontSize: 14.sp, color: const Color.fromARGB(1000, 241, 0, 77)),
+          Observer(
+            builder: (_) {
+              return Text(
+                " ${loginScreenViewModel.user!.fullname} ",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    color: const Color.fromARGB(1000, 241, 0, 77)),
+              );
+            },
           ),
         ],
       ),
       centerTitle: true,
-      
     );
   }
 
@@ -84,17 +90,16 @@ class _MainScreenViewState extends State<MainScreenView> {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(2.h),
-        child:  const Column(
+        child: const Column(
           children: [
-             MainMenu(),
+            MainMenu(),
           ],
         ),
       ),
     );
   }
 
-    
-Widget buildBottomNavigatonBar() {
+  Widget buildBottomNavigatonBar() {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -117,7 +122,4 @@ Widget buildBottomNavigatonBar() {
       onTap: _onItemTapped,
     );
   }
-
-
-
 }

@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:hr_app/email_info_edit_screen/view_model/email_info_edit_screen_view_model.dart';
+import 'package:hr_app/department_info_edit_screen/view_model/department_info_edit_screen_view_model.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
-
-class UpdateEmailButton extends StatefulWidget {
-  const UpdateEmailButton({super.key});
+class UpdateDepartmentButton extends StatefulWidget {
+  const UpdateDepartmentButton({super.key});
 
   @override
-  State<UpdateEmailButton> createState() => _UpdateEmailButtonState();
+  State<UpdateDepartmentButton> createState() => _UpdateDepartmentButtonState();
 }
 
-class _UpdateEmailButtonState extends State<UpdateEmailButton> {
-  final loginScreenViewModel = locator<LoginScreenViewModel>();
-  final emailInfoEditScreenViewModel = locator<EmailInfoEditScreenViewModel>();
+class _UpdateDepartmentButtonState extends State<UpdateDepartmentButton> {
+    final loginScreenViewModel = locator<LoginScreenViewModel>();
+  final departmentInfoEditScreenViewModel = locator<DepartmentInfoEditScreenViewModel>();
 
-  TextEditingController emailController = TextEditingController();
+  TextEditingController departmentController = TextEditingController();
 
   @override
   void didChangeDependencies() {
-    emailController = emailInfoEditScreenViewModel.getNewEmailController();
+    departmentController = departmentInfoEditScreenViewModel.getNewDepartmentcontroller();
 
     super.didChangeDependencies();
   }
@@ -37,7 +36,7 @@ class _UpdateEmailButtonState extends State<UpdateEmailButton> {
         return AlertDialog(
           backgroundColor: Colors.white,
           title: const Text('Warning'),
-          content: const Text("Email fields cannot be left blank."),
+          content: const Text("Department field cannot be left blank."),
           actions: <Widget>[
             TextButton(
               child: const Text('OK'),
@@ -51,6 +50,7 @@ class _UpdateEmailButtonState extends State<UpdateEmailButton> {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -61,15 +61,15 @@ class _UpdateEmailButtonState extends State<UpdateEmailButton> {
             builder: (_) {
               return ElevatedButton(
                   onPressed: () async {
-                    if (emailController.text.isNotEmpty) {
-                      await emailInfoEditScreenViewModel.changeEmail(
+                    if (departmentController.text.isNotEmpty) {
+                      await departmentInfoEditScreenViewModel.changeDepartment(
                           loginScreenViewModel.user!.id,
-                          emailController.text.toString());
+                          departmentController.text.toString());
 
                       // ignore: use_build_context_synchronously
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text('Email successfully changed! New Email : ${emailController.text}'),
+                          content: Text('Department successfully changed! New Department : ${departmentController.text}'),
                           duration: const Duration(
                               seconds: 4), 
                         ),
@@ -86,7 +86,7 @@ class _UpdateEmailButtonState extends State<UpdateEmailButton> {
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
-                  child: const Text("Change E-mail"));
+                  child: const Text("Change Department"));
             },
           ),
         ),

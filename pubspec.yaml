@@ -79,6 +79,9 @@ flutter:
     - images/leave_req_logo-removebg.png
     - images/departments_logo-removebg.png
     - images/advance_payment_logo-removebg.png
+    - images/email_logo.png
+    - images/phone_number_logo.png
+    - images/department_logo.png
 
   #   - images/a_dot_ham.jpeg
 

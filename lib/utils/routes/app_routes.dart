@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
+import 'package:hr_app/email_info_edit_screen/view/email_info_edit_screen_view.dart';
 import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
 import 'package:hr_app/profile_screen/view/profile_screen_view.dart';
@@ -19,6 +20,7 @@ class AppRoutes {
   static const SIGNUP_SCREEN_PATH = "/signupScreenPath";
   static const MAIN_SCREEN_PATH = "/mainScreenPath";
   static const PROFILE_SCREEN_PATH = "/profileScreenPath";
+  static const EMAIL_INFO_EDIT_SCREEN_PATH = "/emailInfoEditScreenPath";
 
   static const ERROR_SCREEN_PATH = "/errorScreenPath";
 
@@ -43,6 +45,8 @@ class AppRoutes {
     getPage(() => const SignUpScreenView(), SIGNUP_SCREEN_PATH),
     getPage(() => const MainScreenView(), MAIN_SCREEN_PATH),
     getPage(() => const ProfileScreenView(), PROFILE_SCREEN_PATH),
+    getPage(() => const EmailInfoEditScreenView(), EMAIL_INFO_EDIT_SCREEN_PATH),
+
 
 
 

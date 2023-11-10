@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
 import 'package:hr_app/department_info_edit_screen/view/department_info_edit_screen_view.dart';
 import 'package:hr_app/email_info_edit_screen/view/email_info_edit_screen_view.dart';
+import 'package:hr_app/fullname_info_edit_screen/view/fullname_info_edit_screen_view.dart';
 import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
 import 'package:hr_app/phone_info_edit_screen/view/phone_info_edit_screen_view.dart';
@@ -25,6 +26,8 @@ class AppRoutes {
   static const EMAIL_INFO_EDIT_SCREEN_PATH = "/emailInfoEditScreenPath";
   static const DEPARTMENT_INFO_EDIT_SCREEN_PATH = "/departmentInfoEditScreenPath";
   static const PHONE_INFO_EDIT_SCREEN_PATH = "/phoneInfoEditScreenPath";
+  static const FULLNAME_INFO_EDIT_SCREEN_PATH = "/fullnameInfoEditScreenPath";
+
 
 
 
@@ -54,6 +57,8 @@ class AppRoutes {
     getPage(() => const EmailInfoEditScreenView(), EMAIL_INFO_EDIT_SCREEN_PATH),
     getPage(() => const DepartmentInfoEditScreenView(), DEPARTMENT_INFO_EDIT_SCREEN_PATH),
     getPage(() => const PhoneInfoEditScreenView(), PHONE_INFO_EDIT_SCREEN_PATH),
+    getPage(() => const FullnameInfoEditScreenView(), FULLNAME_INFO_EDIT_SCREEN_PATH),
+
 
 
 

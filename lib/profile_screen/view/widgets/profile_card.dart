@@ -114,7 +114,9 @@ class _ProfileCardState extends State<ProfileCard> {
               ],
             ),
             trailing: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.edit_outlined)),
+                onPressed: () {
+                  Get.toNamed(AppRoutes.FULLNAME_INFO_EDIT_SCREEN_PATH);
+                }, icon: const Icon(Icons.edit_outlined)),
           ),
         ),
       ],

@@ -2,6 +2,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:hr_app/department_info_edit_screen/view_model/department_info_edit_screen_view_model.dart';
 import 'package:hr_app/email_info_edit_screen/view_model/email_info_edit_screen_view_model.dart';
+import 'package:hr_app/fullname_info_edit_screen/view_model/fullname_info_edit_screen_view_model.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/phone_info_edit_screen/view_model/phone_info_edit_screen_view_model.dart';
 import 'package:hr_app/signup_screen/view_model/signup_screen_view_model.dart';
@@ -15,6 +16,8 @@ void setupLocator(){
   locator.registerLazySingleton<EmailInfoEditScreenViewModel>(() => EmailInfoEditScreenViewModel());
   locator.registerLazySingleton<DepartmentInfoEditScreenViewModel>(() => DepartmentInfoEditScreenViewModel());
   locator.registerLazySingleton<PhoneInfoEditScreenViewModel>(() => PhoneInfoEditScreenViewModel());
+  locator.registerLazySingleton<FullnameInfoEditScreenViewModel>(() => FullnameInfoEditScreenViewModel());
+
 
 
 

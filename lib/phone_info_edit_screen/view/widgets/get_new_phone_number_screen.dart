@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/phone_info_edit_screen/view_model/phone_info_edit_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
@@ -14,7 +13,6 @@ class GetNewPhoneNumberScreen extends StatefulWidget {
 }
 
 class _GetNewPhoneNumberScreenState extends State<GetNewPhoneNumberScreen> {
-  final loginScreenViewModel = locator<LoginScreenViewModel>();
   final phoneInfoEditScreenViewModel = locator<PhoneInfoEditScreenViewModel>();
 
 

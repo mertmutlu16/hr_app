@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:hr_app/email_info_edit_screen/view_model/email_info_edit_screen_view_model.dart';
+import 'package:hr_app/fullname_info_edit_screen/view_model/fullname_info_edit_screen_view_model.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:sizer/sizer.dart';
 
-class GetNewEmailScreen extends StatefulWidget {
-  const GetNewEmailScreen({super.key});
+class GetNewFullnameScreen extends StatefulWidget {
+  const GetNewFullnameScreen({super.key});
 
   @override
-  State<GetNewEmailScreen> createState() => _GetNewEmailScreenState();
+  State<GetNewFullnameScreen> createState() => _GetNewFullnameScreenState();
 }
 
-class _GetNewEmailScreenState extends State<GetNewEmailScreen> {
-  final loginScreenViewModel = locator<LoginScreenViewModel>();
-  final emailInfoEditScreenViewModel = locator<EmailInfoEditScreenViewModel>();
+class _GetNewFullnameScreenState extends State<GetNewFullnameScreen> {
+   final loginScreenViewModel = locator<LoginScreenViewModel>();
+  final fullnameInfoEditScreenViewModel = locator<FullnameInfoEditScreenViewModel>();
 
 
   @override
@@ -24,16 +24,16 @@ class _GetNewEmailScreenState extends State<GetNewEmailScreen> {
         Padding(
           padding: EdgeInsets.only(bottom: 1.5.h),
           child: Text(
-            "Type your new e-mail",
+            "Type your new fullname",
             style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600),
           ),
         ),
         Observer(
           builder: (_) {
             return TextField(
-              controller: emailInfoEditScreenViewModel.newEmailTextController,
+              controller: fullnameInfoEditScreenViewModel.newFullnameTextController,
               decoration:  InputDecoration(
-                hintText: " Your old email : ${loginScreenViewModel.user!.email}",
+                hintText: " Your old fullname : ${loginScreenViewModel.user!.fullname}",
                 border: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black54),
                 ),

@@ -13,23 +13,42 @@ class DepartmentInputArea extends StatefulWidget {
 
 class _DepartmentInputAreaState extends State<DepartmentInputArea> {
   final signupScreenViewModel = locator<SignupScreenViewModel>();
+   List<String> departmentList = <String>['Mobile', 'Backend', 'Database', 'Artificial Intelligence', 'Product' , 'Marketing' , 'Human Resources' ,'Finance'];
 
- //Mobile , Backend , Database ,Product ,Marketing ,Artificial Intelligence , Human Resources , Finance ,  //Accounting ,Advertising....
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SizedBox(height: 2.5.h),
          Observer( builder: (_){
-           return TextField(
-            controller: signupScreenViewModel.departmentTextController,
-            decoration: const InputDecoration(
-              labelText:"Department", 
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.black54),
+           return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+             children:[ 
+              Expanded(
+                child: DropdownButton<String>(
+                value: signupScreenViewModel.departmentSelectedController ,
+                onChanged: (String? newValue) {
+                    setState(() {
+                      signupScreenViewModel.departmentSelectedController = newValue!;
+                    });
+                  },
+                items: departmentList.map<DropdownMenuItem<String>>((String value ) => DropdownMenuItem<String>(
+                  value: value,
+                  child: Padding(
+                    padding:  EdgeInsets.only(left : 25.w),
+                    child: Text(value),
+                  ),
+                  ),
+                  ).toList(),
+                hint: Padding(
+                  padding: EdgeInsets.only( left : 25.w),
+                  child: const Text("Select Department"),
+                ),
+                         
+                ),
               ),
-            ),
-                 );
+              ]
+           );
          },),
       ],
     );

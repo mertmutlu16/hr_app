@@ -19,6 +19,9 @@ abstract class _SignupScreenViewModelBase with Store {
   TextEditingController departmentTextController = TextEditingController();
 
   @observable
+  String? departmentSelectedController;
+
+  @observable
   TextEditingController phonenumberTextController = TextEditingController();
 
   @observable

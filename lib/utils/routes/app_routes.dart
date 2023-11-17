@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
 import 'package:hr_app/department_info_edit_screen/view/department_info_edit_screen_view.dart';
 import 'package:hr_app/email_info_edit_screen/view/email_info_edit_screen_view.dart';
+import 'package:hr_app/events_screen/view/events_screen_view.dart';
 import 'package:hr_app/fullname_info_edit_screen/view/fullname_info_edit_screen_view.dart';
 import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
@@ -27,6 +28,8 @@ class AppRoutes {
   static const DEPARTMENT_INFO_EDIT_SCREEN_PATH = "/departmentInfoEditScreenPath";
   static const PHONE_INFO_EDIT_SCREEN_PATH = "/phoneInfoEditScreenPath";
   static const FULLNAME_INFO_EDIT_SCREEN_PATH = "/fullnameInfoEditScreenPath";
+  static const EVENTS_SCREEN_PATH = "/EventsScreenPath";
+
 
 
 
@@ -58,6 +61,9 @@ class AppRoutes {
     getPage(() => const DepartmentInfoEditScreenView(), DEPARTMENT_INFO_EDIT_SCREEN_PATH),
     getPage(() => const PhoneInfoEditScreenView(), PHONE_INFO_EDIT_SCREEN_PATH),
     getPage(() => const FullnameInfoEditScreenView(), FULLNAME_INFO_EDIT_SCREEN_PATH),
+    getPage(() => const EventsScreenView(), EVENTS_SCREEN_PATH),
+
+    
 
 
 

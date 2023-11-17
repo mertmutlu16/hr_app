@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
 class MainMenu extends StatefulWidget {
@@ -25,26 +27,31 @@ class _MainMenuState extends State<MainMenu> {
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: 1.5.h),
-                child: Card(
-                    color: Colors.white38,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Padding(
-                      padding: EdgeInsets.all(4.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Events",
-                            style: TextStyle(fontSize: 15.sp),
-                          ),
-                          SizedBox(
-                              height: 10.h,
-                              child: Image.asset(
-                                  "images/events_logo-removebg.png")),
-                        ],
-                      ),
-                    )),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.EVENTS_SCREEN_PATH);
+                  },
+                  child: Card(
+                      color: Colors.white38,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: EdgeInsets.all(4.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Events",
+                              style: TextStyle(fontSize: 15.sp),
+                            ),
+                            SizedBox(
+                                height: 10.h,
+                                child: Image.asset(
+                                    "images/events_logo-removebg.png")),
+                          ],
+                        ),
+                      )),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 1.5.h),

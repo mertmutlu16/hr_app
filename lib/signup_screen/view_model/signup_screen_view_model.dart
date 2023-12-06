@@ -51,6 +51,11 @@ abstract class _SignupScreenViewModelBase with Store {
     return departmentTextController;
   }
 
+    @action
+  String? getDepartmentControllerSelected() {
+    return departmentSelectedController;
+  }
+
   @action
   TextEditingController getPhoneNumberController() {
     return phonenumberTextController;

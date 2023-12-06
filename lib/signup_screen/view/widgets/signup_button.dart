@@ -21,6 +21,7 @@ class _SignupButtonState extends State<SignupButton> {
   TextEditingController departmentController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  String? departmentControllerSelect;
 
   //int? birthDay;
   //int? birthMonth;
@@ -30,7 +31,8 @@ class _SignupButtonState extends State<SignupButton> {
   void didChangeDependencies() {
     emailController = signupScreenViewModel.getEmailController();
     fullnameController = signupScreenViewModel.getFullnameController();
-    departmentController = signupScreenViewModel.getDepartmentController();
+    departmentControllerSelect = signupScreenViewModel.getDepartmentControllerSelected();
+    //departmentController = signupScreenViewModel.getDepartmentController();
     phoneNumberController = signupScreenViewModel.getPhoneNumberController();
     passwordController = signupScreenViewModel.getPasswordController();
     //birthDay = signupScreenViewModel.getBirthDay();
@@ -101,7 +103,7 @@ class _SignupButtonState extends State<SignupButton> {
 
                       if (emailController.text.isNotEmpty &&
                           fullnameController.text.isNotEmpty &&
-                          departmentController.text.isNotEmpty &&
+                          departmentControllerSelect!.isNotEmpty &&
                           phoneNumberController.text.isNotEmpty &&
                           signupScreenViewModel.selectedBirthDay != null  &&
                           signupScreenViewModel.selectedBirthMonth != null &&
@@ -112,7 +114,7 @@ class _SignupButtonState extends State<SignupButton> {
                               .createNewUser(
                               emailController.text.toString(), 
                               fullnameController.text.toString(),
-                              departmentController.text.toString(), 
+                              departmentControllerSelect!, 
                               phoneNumberController.text.toString(),
                               signupScreenViewModel.selectedBirthDay! ,
                               signupScreenViewModel.selectedBirthMonth! ,

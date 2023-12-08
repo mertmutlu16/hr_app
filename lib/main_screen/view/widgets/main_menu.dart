@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -11,6 +13,8 @@ class MainMenu extends StatefulWidget {
 }
 
 class _MainMenuState extends State<MainMenu> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +33,12 @@ class _MainMenuState extends State<MainMenu> {
                 padding: EdgeInsets.only(bottom: 1.5.h),
                 child: GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoutes.EVENTS_SCREEN_PATH);
+                    if (loginScreenViewModel.user!.department ==
+                        "Human Resources") {
+                      Get.toNamed(AppRoutes.MANAGER_EVENTS_SCREEN_PATH);
+                    } else {
+                      Get.toNamed(AppRoutes.EVENTS_SCREEN_PATH);
+                    }
                   },
                   child: Card(
                       color: Colors.white38,

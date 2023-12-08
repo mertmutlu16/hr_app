@@ -61,6 +61,24 @@ mixin _$SignupScreenViewModel on _SignupScreenViewModelBase, Store {
     });
   }
 
+  late final _$departmentSelectedControllerAtom = Atom(
+      name: '_SignupScreenViewModelBase.departmentSelectedController',
+      context: context);
+
+  @override
+  String? get departmentSelectedController {
+    _$departmentSelectedControllerAtom.reportRead();
+    return super.departmentSelectedController;
+  }
+
+  @override
+  set departmentSelectedController(String? value) {
+    _$departmentSelectedControllerAtom
+        .reportWrite(value, super.departmentSelectedController, () {
+      super.departmentSelectedController = value;
+    });
+  }
+
   late final _$phonenumberTextControllerAtom = Atom(
       name: '_SignupScreenViewModelBase.phonenumberTextController',
       context: context);
@@ -207,6 +225,18 @@ mixin _$SignupScreenViewModel on _SignupScreenViewModelBase, Store {
   }
 
   @override
+  String? getDepartmentControllerSelected() {
+    final _$actionInfo =
+        _$_SignupScreenViewModelBaseActionController.startAction(
+            name: '_SignupScreenViewModelBase.getDepartmentControllerSelected');
+    try {
+      return super.getDepartmentControllerSelected();
+    } finally {
+      _$_SignupScreenViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   TextEditingController getPhoneNumberController() {
     final _$actionInfo =
         _$_SignupScreenViewModelBaseActionController.startAction(
@@ -235,6 +265,7 @@ mixin _$SignupScreenViewModel on _SignupScreenViewModelBase, Store {
 emailTextController: ${emailTextController},
 fullnameTextController: ${fullnameTextController},
 departmentTextController: ${departmentTextController},
+departmentSelectedController: ${departmentSelectedController},
 phonenumberTextController: ${phonenumberTextController},
 selectedBirthDay: ${selectedBirthDay},
 selectedBirthMonth: ${selectedBirthMonth},

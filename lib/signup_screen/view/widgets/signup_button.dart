@@ -103,7 +103,7 @@ class _SignupButtonState extends State<SignupButton> {
 
                       if (emailController.text.isNotEmpty &&
                           fullnameController.text.isNotEmpty &&
-                          departmentControllerSelect!.isNotEmpty &&
+                          signupScreenViewModel.departmentSelectedController!.isNotEmpty &&
                           phoneNumberController.text.isNotEmpty &&
                           signupScreenViewModel.selectedBirthDay != null  &&
                           signupScreenViewModel.selectedBirthMonth != null &&
@@ -114,7 +114,7 @@ class _SignupButtonState extends State<SignupButton> {
                               .createNewUser(
                               emailController.text.toString(), 
                               fullnameController.text.toString(),
-                              departmentControllerSelect!, 
+                              signupScreenViewModel.departmentSelectedController!, 
                               phoneNumberController.text.toString(),
                               signupScreenViewModel.selectedBirthDay! ,
                               signupScreenViewModel.selectedBirthMonth! ,

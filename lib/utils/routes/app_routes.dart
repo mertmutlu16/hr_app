@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hr_app/add_new_events_screen/view/add_new_events_screen_view.dart';
 import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
 import 'package:hr_app/department_info_edit_screen/view/department_info_edit_screen_view.dart';
 import 'package:hr_app/email_info_edit_screen/view/email_info_edit_screen_view.dart';
@@ -10,6 +11,7 @@ import 'package:hr_app/events_screen/view/events_screen_view.dart';
 import 'package:hr_app/fullname_info_edit_screen/view/fullname_info_edit_screen_view.dart';
 import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
+import 'package:hr_app/manager_events_screen/view/manager_events_screen_view.dart';
 import 'package:hr_app/phone_info_edit_screen/view/phone_info_edit_screen_view.dart';
 import 'package:hr_app/profile_screen/view/profile_screen_view.dart';
 import 'package:hr_app/signup_screen/view/signup_screen_view.dart';
@@ -29,6 +31,10 @@ class AppRoutes {
   static const PHONE_INFO_EDIT_SCREEN_PATH = "/phoneInfoEditScreenPath";
   static const FULLNAME_INFO_EDIT_SCREEN_PATH = "/fullnameInfoEditScreenPath";
   static const EVENTS_SCREEN_PATH = "/EventsScreenPath";
+  static const MANAGER_EVENTS_SCREEN_PATH = "/ManagerEventsScreenPath";
+  static const ADD_NEW_EVENTS_SCREEN_PATH = "/AddNewEventsScreenPath";
+
+
 
 
 
@@ -62,6 +68,10 @@ class AppRoutes {
     getPage(() => const PhoneInfoEditScreenView(), PHONE_INFO_EDIT_SCREEN_PATH),
     getPage(() => const FullnameInfoEditScreenView(), FULLNAME_INFO_EDIT_SCREEN_PATH),
     getPage(() => const EventsScreenView(), EVENTS_SCREEN_PATH),
+    getPage(() => const ManagerEventsScreenView(), MANAGER_EVENTS_SCREEN_PATH),
+    getPage(() => const AddNewEventsScreenView(), ADD_NEW_EVENTS_SCREEN_PATH),
+
+
 
     
 

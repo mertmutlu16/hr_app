@@ -13,7 +13,7 @@ class DepartmentInputArea extends StatefulWidget {
 
 class _DepartmentInputAreaState extends State<DepartmentInputArea> {
   final signupScreenViewModel = locator<SignupScreenViewModel>();
-   List<String> departmentList = <String>['Mobile', 'Backend', 'Database', 'Artificial Intelligence', 'Product' , 'Marketing' , 'Human Resources' ];
+   List<String> departmentList = <String>['Mobile', 'Backend', 'Database', 'Web','ML', 'Product' , 'Marketing' , 'Human Resources' ];
 
   @override
   Widget build(BuildContext context) {

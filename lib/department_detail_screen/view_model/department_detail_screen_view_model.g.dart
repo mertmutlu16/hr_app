@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'manager_events_screen_view_model.dart';
+part of 'department_detail_screen_view_model.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,17 +8,8 @@ part of 'manager_events_screen_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$ManagerEventsScreenViewModel
-    on _ManagerEventsScreenViewModelBase, Store {
-  late final _$removeEventAsyncAction = AsyncAction(
-      '_ManagerEventsScreenViewModelBase.removeEvent',
-      context: context);
-
-  @override
-  Future<bool> removeEvent(int eventId) {
-    return _$removeEventAsyncAction.run(() => super.removeEvent(eventId));
-  }
-
+mixin _$DepartmentDetailScreenViewModel
+    on _DepartmentDetailScreenViewModelBase, Store {
   @override
   String toString() {
     return '''

@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/add_new_events_screen/view/add_new_events_screen_view.dart';
 import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
+import 'package:hr_app/department_detail_screen/view/department_detail_screen_view.dart';
 import 'package:hr_app/department_info_edit_screen/view/department_info_edit_screen_view.dart';
+import 'package:hr_app/department_screen/view/department_screen_view.dart';
 import 'package:hr_app/email_info_edit_screen/view/email_info_edit_screen_view.dart';
 import 'package:hr_app/events_screen/view/events_screen_view.dart';
 import 'package:hr_app/fullname_info_edit_screen/view/fullname_info_edit_screen_view.dart';
@@ -33,6 +35,10 @@ class AppRoutes {
   static const EVENTS_SCREEN_PATH = "/EventsScreenPath";
   static const MANAGER_EVENTS_SCREEN_PATH = "/ManagerEventsScreenPath";
   static const ADD_NEW_EVENTS_SCREEN_PATH = "/AddNewEventsScreenPath";
+  static const DEPARTMENT_SCREEN_PATH = "/DepartmentScreenPath";
+  static const DEPARTMENT_DETAIL_SCREEN_PATH = "/DepartmentDetailScreenPath";
+
+
 
 
 
@@ -70,6 +76,10 @@ class AppRoutes {
     getPage(() => const EventsScreenView(), EVENTS_SCREEN_PATH),
     getPage(() => const ManagerEventsScreenView(), MANAGER_EVENTS_SCREEN_PATH),
     getPage(() => const AddNewEventsScreenView(), ADD_NEW_EVENTS_SCREEN_PATH),
+    getPage(() => const DepartmentScreenView(), DEPARTMENT_SCREEN_PATH),
+    getPage(() =>  DepartmentDetailScreenView(userDepartment: Get.arguments), DEPARTMENT_DETAIL_SCREEN_PATH),
+
+
 
 
 

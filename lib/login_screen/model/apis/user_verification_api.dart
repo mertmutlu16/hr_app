@@ -12,7 +12,8 @@ class UserVerificationApi {
       "BirthDay": 1,
       "BirthMonth": 1,
       "BirthYear": 2001,
-      "Password": password
+      "Password": password,
+      "LeaveDay":0
     };
     var userModelJson = jsonEncode(userModel);
     //print("RESPONSE ÖNCESİ");

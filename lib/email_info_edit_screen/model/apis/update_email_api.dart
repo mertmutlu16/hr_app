@@ -16,7 +16,8 @@ class UpdateEmailApi {
       "BirthDay": 1,
       "BirthMonth": 1,
       "BirthYear": 2001,
-      "Password": ""
+      "Password": "",
+      "LeaveDay":0
     };
     var userModelJson = jsonEncode(userModel);
     var response = await http.put(

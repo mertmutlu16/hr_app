@@ -18,6 +18,7 @@ class Users {
     int birthMonth;
     int birthYear;
     String password;
+    int leaveDay;
 
     Users({
         required this.id,
@@ -29,6 +30,8 @@ class Users {
         required this.birthMonth,
         required this.birthYear,
         required this.password,
+        required this.leaveDay,
+
     });
 
     factory Users.fromJson(Map<String, dynamic> json) => Users(
@@ -41,6 +44,8 @@ class Users {
         birthMonth: json["birthMonth"],
         birthYear: json["birthYear"],
         password: json["password"],
+        leaveDay: json["leaveDay"],
+
     );
 
     Map<String, dynamic> toJson() => {
@@ -53,5 +58,7 @@ class Users {
         "birthMonth": birthMonth,
         "birthYear": birthYear,
         "password": password,
+        "leaveDay": leaveDay,
+
     };
 }

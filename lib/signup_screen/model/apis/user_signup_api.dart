@@ -11,7 +11,8 @@ class UserSignupApi {
       int birthDay,
       int birthMonth,
       int birthYear,
-      String password) async {
+      String password,
+      ) async {
 
       var url ="http://192.168.1.219:44320/api/users/createNewUser";
       
@@ -23,7 +24,8 @@ class UserSignupApi {
       "BirthDay": birthDay,
       "BirthMonth": birthMonth,
       "BirthYear": birthYear,
-      "Password": password
+      "Password": password,
+      "LeaveDay": 30
     };
 
     var userModelJson = jsonEncode(userModel);

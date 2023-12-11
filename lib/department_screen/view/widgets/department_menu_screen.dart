@@ -47,9 +47,10 @@ class _DepartmentMenuScreenState extends State<DepartmentMenuScreen> {
           height: 2.5.h,
         ),
         SizedBox(
-          height: 72.h,
+          height: 66.h,
           child: Observer(builder: (_) {
             return GridView.builder(
+                
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   childAspectRatio: 1,

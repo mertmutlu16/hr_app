@@ -11,6 +11,7 @@ import 'package:hr_app/department_screen/view/department_screen_view.dart';
 import 'package:hr_app/email_info_edit_screen/view/email_info_edit_screen_view.dart';
 import 'package:hr_app/events_screen/view/events_screen_view.dart';
 import 'package:hr_app/fullname_info_edit_screen/view/fullname_info_edit_screen_view.dart';
+import 'package:hr_app/leave_request_screen/view/leave_request_screen_view.dart';
 import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
 import 'package:hr_app/manager_events_screen/view/manager_events_screen_view.dart';
@@ -37,6 +38,8 @@ class AppRoutes {
   static const ADD_NEW_EVENTS_SCREEN_PATH = "/AddNewEventsScreenPath";
   static const DEPARTMENT_SCREEN_PATH = "/DepartmentScreenPath";
   static const DEPARTMENT_DETAIL_SCREEN_PATH = "/DepartmentDetailScreenPath";
+  static const LEAVE_REQUEST_SCREEN_PATH = "/LeaveRequestScreenPath";
+
 
 
 
@@ -78,6 +81,7 @@ class AppRoutes {
     getPage(() => const AddNewEventsScreenView(), ADD_NEW_EVENTS_SCREEN_PATH),
     getPage(() => const DepartmentScreenView(), DEPARTMENT_SCREEN_PATH),
     getPage(() =>  DepartmentDetailScreenView(userDepartment: Get.arguments), DEPARTMENT_DETAIL_SCREEN_PATH),
+    getPage(() => const LeaveRequestScreenView(), LEAVE_REQUEST_SCREEN_PATH),
 
 
 

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:hr_app/leave_request_screen/view/widgets/date_range_picker_menu.dart';
 import 'package:hr_app/leave_request_screen/view_model/leave_request_screen_view_model.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';
-import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
 class SubmitButtonInsideMenu extends StatefulWidget {
@@ -73,7 +71,8 @@ class _SubmitButtonInsideMenuState extends State<SubmitButtonInsideMenu> {
                         leaveRequestScreenViewModel.endLeaveMonth!,
                         leaveRequestScreenViewModel.endLeaveYear!,
                         leaveRequestScreenViewModel.numberOfLeaveDay!,
-                        loginScreenViewModel.user!.id);
+                        loginScreenViewModel.user!.id,
+                        loginScreenViewModel.user!.fullname);
 
                     leaveRequestScreenViewModel.changeLeaveDay(
                         loginScreenViewModel.user!.id,

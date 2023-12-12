@@ -1,14 +1,14 @@
 // To parse this JSON data, do
 //
-//     final pendingLeaves = pendingLeavesFromJson(jsonString);
+//     final declinedLeaves = declinedLeavesFromJson(jsonString);
 
 import 'dart:convert';
 
-List<PendingLeaves> pendingLeavesFromJson(String str) => List<PendingLeaves>.from(json.decode(str).map((x) => PendingLeaves.fromJson(x)));
+List<DeclinedLeaves> declinedLeavesFromJson(String str) => List<DeclinedLeaves>.from(json.decode(str).map((x) => DeclinedLeaves.fromJson(x)));
 
-String pendingLeavesToJson(List<PendingLeaves> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String declinedLeavesToJson(List<DeclinedLeaves> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class PendingLeaves {
+class DeclinedLeaves {
     int id;
     String reason;
     int startLeaveDay;
@@ -21,7 +21,7 @@ class PendingLeaves {
     int userId;
     String fullname;
 
-    PendingLeaves({
+    DeclinedLeaves({
         required this.id,
         required this.reason,
         required this.startLeaveDay,
@@ -35,7 +35,7 @@ class PendingLeaves {
         required this.fullname,
     });
 
-    factory PendingLeaves.fromJson(Map<String, dynamic> json) => PendingLeaves(
+    factory DeclinedLeaves.fromJson(Map<String, dynamic> json) => DeclinedLeaves(
         id: json["id"],
         reason: json["reason"],
         startLeaveDay: json["startLeaveDay"],

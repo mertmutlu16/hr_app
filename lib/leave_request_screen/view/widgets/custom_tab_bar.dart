@@ -3,7 +3,12 @@ import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
 import 'package:hr_app/leave_request_screen/view/widgets/approved_screen.dart';
 import 'package:hr_app/leave_request_screen/view/widgets/date_range_picker_menu.dart';
 import 'package:hr_app/leave_request_screen/view/widgets/declined_screen.dart';
+import 'package:hr_app/leave_request_screen/view/widgets/manager_approved_screen.dart';
+import 'package:hr_app/leave_request_screen/view/widgets/manager_declined_screen.dart';
+import 'package:hr_app/leave_request_screen/view/widgets/manager_pending_screen.dart';
 import 'package:hr_app/leave_request_screen/view/widgets/pending_screen.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomTabBar extends StatefulWidget {
@@ -11,18 +16,17 @@ class CustomTabBar extends StatefulWidget {
 
   @override
   State<CustomTabBar> createState() => _CustomTabBarState();
-
-  
- 
 }
-  
 
 class _CustomTabBarState extends State<CustomTabBar> {
-  List<String> tabBarItems = ["Leave Request", "Pending", "Approved", "Declined"];
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+  List<String> tabBarItems = [
+    "Leave Request",
+    "Pending",
+    "Approved",
+    "Declined"
+  ];
   int current = 0;
-
-  
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +103,6 @@ class _CustomTabBarState extends State<CustomTabBar> {
                 }),
           ),
         ),
-        
-
         SizedBox(
           height: 72.h,
           child: getPageContent(current),
@@ -109,16 +111,28 @@ class _CustomTabBarState extends State<CustomTabBar> {
     );
   }
 
-  Widget getPageContent(int index){
-    switch(index){
-      case 0 : 
-       return const DateRangePickerMenu();
-      case 1 : 
-      return const PendingScreen();
-      case 2 : 
-      return const ApprovedScreen();
-      case 3 : 
-      return const DeclinedScreen();
+  Widget getPageContent(int index) {
+    switch (index) {
+      case 0:
+        return const DateRangePickerMenu();
+      case 1:
+        if (loginScreenViewModel.user!.department == "Human Resources") {
+          return const ManagerPendingScreen();
+        } else {
+          return const PendingScreen();
+        }
+      case 2:
+        if (loginScreenViewModel.user!.department == "Human Resources") {
+          return const ManagerApprovedScreen();
+        } else {
+          return const ApprovedScreen();
+        }
+      case 3:
+        if (loginScreenViewModel.user!.department == "Human Resources") {
+          return const ManagerDeclinedScreen();
+        } else {
+          return const DeclinedScreen();
+        }
       default:
         return const ErrorScreen();
     }

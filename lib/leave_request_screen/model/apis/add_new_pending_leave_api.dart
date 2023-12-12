@@ -14,6 +14,7 @@ class AddNewPendingLeaveApi{
     int endLeaveYear,
     int numberOfLeaveDay,
     int userId,
+    String fullName,
   ) async {
 
     var url = "http://192.168.1.219:44320/api/pendingLeaves/createNewPendingLeave";
@@ -27,7 +28,8 @@ class AddNewPendingLeaveApi{
       "EndLeaveMonth" :endLeaveMonth,
       "EndLeaveYear" :endLeaveYear,
       "NumberOfLeaveDay" : numberOfLeaveDay,
-      "UserId":userId
+      "UserId":userId,
+      "Fullname" :fullName
     };
 
     var pendingLeaveModelJson = jsonEncode(pendingLeaveModel);

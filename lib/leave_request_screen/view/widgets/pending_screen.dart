@@ -16,25 +16,25 @@ class _PendingScreenState extends State<PendingScreen> {
   final leaveRequestScreenViewModel = locator<LeaveRequestScreenViewModel>();
   final loginScreenViewModel = locator<LoginScreenViewModel>();
 
-  int? pendingLeavesListOldLength;
+  int? pendingLeavesListByUserOldLength;
 
   @override
   void initState() {
     super.initState();
-    if (leaveRequestScreenViewModel.pendingLeavesList.isEmpty) {
+    if (leaveRequestScreenViewModel.pendingLeavesListByUser.isEmpty) {
       leaveRequestScreenViewModel
           .getPendingListLeavesByUser(loginScreenViewModel.user!.id);
-      pendingLeavesListOldLength =
-          leaveRequestScreenViewModel.pendingLeavesList.length;
+      pendingLeavesListByUserOldLength =
+          leaveRequestScreenViewModel.pendingLeavesListByUser.length;
     }
   }
 
   @override
   void didChangeDependencies() {
-    if (pendingLeavesListOldLength !=
-        leaveRequestScreenViewModel.pendingLeavesList.length) {
+    if (pendingLeavesListByUserOldLength !=
+        leaveRequestScreenViewModel.pendingLeavesListByUser.length) {
       setState(() {
-        leaveRequestScreenViewModel.pendingLeavesList.clear();
+        leaveRequestScreenViewModel.pendingLeavesListByUser.clear();
         leaveRequestScreenViewModel
             .getPendingListLeavesByUser(loginScreenViewModel.user!.id);
       });
@@ -53,7 +53,7 @@ class _PendingScreenState extends State<PendingScreen> {
         SizedBox(
           height: 60.h,
           child: Observer(builder: (_) {
-            if(leaveRequestScreenViewModel.pendingLeavesList.isEmpty){
+            if(leaveRequestScreenViewModel.pendingLeavesListByUser.isEmpty){
               return Center(
                 child: Text(
                 'No pending requests.',
@@ -63,7 +63,7 @@ class _PendingScreenState extends State<PendingScreen> {
             }else{
              
             return ListView.builder(
-                itemCount: leaveRequestScreenViewModel.pendingLeavesList.length,
+                itemCount: leaveRequestScreenViewModel.pendingLeavesListByUser.length,
                 itemBuilder: (context, index) {
                   return SizedBox(
                     height: 20.h,
@@ -81,7 +81,7 @@ class _PendingScreenState extends State<PendingScreen> {
                               Padding(
                                 padding:  EdgeInsets.only(top : 1.h ,bottom: 1.h),
                                 child: Text(" Reason for requesting leave : ${leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].reason} " ,
+                                    .pendingLeavesListByUser[index].reason} " ,
                                 style: TextStyle(
                                     fontSize: 11.0.sp,
                                     fontWeight: FontWeight.w500),),
@@ -92,17 +92,17 @@ class _PendingScreenState extends State<PendingScreen> {
                                 child: Text(
                                   "Leave dates : ${
                                     leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].startLeaveDay}.${
+                                    .pendingLeavesListByUser[index].startLeaveDay}.${
                                       leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].startLeaveMonth}.${
+                                    .pendingLeavesListByUser[index].startLeaveMonth}.${
                                       leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].startLeaveYear} - ${
+                                    .pendingLeavesListByUser[index].startLeaveYear} - ${
                                       leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].endLeaveDay}.${
+                                    .pendingLeavesListByUser[index].endLeaveDay}.${
                                       leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].endLeaveMonth}.${
+                                    .pendingLeavesListByUser[index].endLeaveMonth}.${
                                       leaveRequestScreenViewModel
-                                    .pendingLeavesList[index].endLeaveYear}.",
+                                    .pendingLeavesListByUser[index].endLeaveYear}",
                                   style: TextStyle(
                                     fontSize: 11.0.sp,
                                     fontWeight: FontWeight.w500),
@@ -110,8 +110,8 @@ class _PendingScreenState extends State<PendingScreen> {
                               ),
 
                                Text(
-                                  "Number of leave days : ${
-                                    leaveRequestScreenViewModel.pendingLeavesList[index].numberOfLeaveDay}",
+                                  "Days off : ${
+                                    leaveRequestScreenViewModel.pendingLeavesListByUser[index].numberOfLeaveDay} day",
                                 style: TextStyle(
                                   fontSize: 11.0.sp,
                                   fontWeight: FontWeight.w500),

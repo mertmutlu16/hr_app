@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hr_app/leave_request_screen/model/apis/add_new_pending_leave_api.dart';
+import 'package:hr_app/leave_request_screen/model/apis/get_pending_leaves_by_users_api.dart';
 import 'package:hr_app/leave_request_screen/model/apis/update_users_leave_day_api.dart';
+import 'package:hr_app/utils/models/pendingLeaves.dart';
 import 'package:mobx/mobx.dart';
 part 'leave_request_screen_view_model.g.dart';
 
@@ -9,7 +11,9 @@ class LeaveRequestScreenViewModel = _LeaveRequestScreenViewModelBase
 
 abstract class _LeaveRequestScreenViewModelBase with Store {
   final AddNewPendingLeaveApi _addNewPendingLeave = AddNewPendingLeaveApi();
-  final UpdateUsersLeaveDayApi _updateUsersLeaveDay = UpdateUsersLeaveDayApi();
+    final UpdateUsersLeaveDayApi _updateUsersLeaveDay = UpdateUsersLeaveDayApi();
+    final GetPendingLeavesByUserApi _getPendingLeavesByUser = GetPendingLeavesByUserApi();
+
   @observable
   TextEditingController reasonTextController = TextEditingController();
 
@@ -38,6 +42,9 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
   TextEditingController getReasonController() {
     return reasonTextController;
   }
+
+  @observable
+  ObservableList<PendingLeaves> pendingLeavesList = ObservableList();
 
   @action
   Future createNewPendingLeave(
@@ -73,6 +80,20 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
         .catchError((err) {
       debugPrint(err.toString());
     });
+  }
+
+  @action
+  Future<List<PendingLeaves>> getPendingListLeavesByUser(int userId) async {
+     var data = await _getPendingLeavesByUser.getPendingLeavesByUserApi(userId);
+    for(var item in data){
+
+      var pendings=PendingLeaves.fromJson(item as Map<String , dynamic>);
+      //print( "liste :  ${pendings.eventName}");
+      pendingLeavesList.add(pendings);
+    }
+    
+    return pendingLeavesList;
+
   }
 
 

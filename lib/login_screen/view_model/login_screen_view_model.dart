@@ -28,6 +28,11 @@ abstract class _LoginScreenViewModelBase with Store {
   TextEditingController getPasswordController(){
     return passwordTextController;
   }
+
+  @action
+  int? getLeaveDay(){
+    return user!.leaveDay;
+  }
   
 
   @action

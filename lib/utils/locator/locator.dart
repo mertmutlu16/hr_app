@@ -7,6 +7,7 @@ import 'package:hr_app/department_screen/view_model/department_screen_view_model
 import 'package:hr_app/email_info_edit_screen/view_model/email_info_edit_screen_view_model.dart';
 import 'package:hr_app/events_screen/view_model/events_screen_view_model.dart';
 import 'package:hr_app/fullname_info_edit_screen/view_model/fullname_info_edit_screen_view_model.dart';
+import 'package:hr_app/leave_request_screen/view_model/leave_request_screen_view_model.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/manager_events_screen/view_model/manager_events_screen_view_model.dart';
 import 'package:hr_app/phone_info_edit_screen/view_model/phone_info_edit_screen_view_model.dart';
@@ -27,6 +28,8 @@ void setupLocator(){
   locator.registerLazySingleton<ManagerEventsScreenViewModel>(() => ManagerEventsScreenViewModel());
   locator.registerLazySingleton<DepartmentScreenViewModel>(() => DepartmentScreenViewModel());
   locator.registerLazySingleton<DepartmentDetailScreenViewModel>(() => DepartmentDetailScreenViewModel());
+  locator.registerLazySingleton<LeaveRequestScreenViewModel>(() => LeaveRequestScreenViewModel());
+
 
 
 

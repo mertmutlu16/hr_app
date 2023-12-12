@@ -25,6 +25,51 @@ mixin _$DepartmentScreenViewModel on _DepartmentScreenViewModelBase, Store {
     });
   }
 
+  late final _$searchedUsersListAtom = Atom(
+      name: '_DepartmentScreenViewModelBase.searchedUsersList',
+      context: context);
+
+  @override
+  ObservableList<Users> get searchedUsersList {
+    _$searchedUsersListAtom.reportRead();
+    return super.searchedUsersList;
+  }
+
+  @override
+  set searchedUsersList(ObservableList<Users> value) {
+    _$searchedUsersListAtom.reportWrite(value, super.searchedUsersList, () {
+      super.searchedUsersList = value;
+    });
+  }
+
+  late final _$userNameControllerTextAtom = Atom(
+      name: '_DepartmentScreenViewModelBase.userNameControllerText',
+      context: context);
+
+  @override
+  TextEditingController get userNameControllerText {
+    _$userNameControllerTextAtom.reportRead();
+    return super.userNameControllerText;
+  }
+
+  @override
+  set userNameControllerText(TextEditingController value) {
+    _$userNameControllerTextAtom
+        .reportWrite(value, super.userNameControllerText, () {
+      super.userNameControllerText = value;
+    });
+  }
+
+  late final _$getSearchedAllUsersAsyncAction = AsyncAction(
+      '_DepartmentScreenViewModelBase.getSearchedAllUsers',
+      context: context);
+
+  @override
+  Future<List<Users>> getSearchedAllUsers(String userName) {
+    return _$getSearchedAllUsersAsyncAction
+        .run(() => super.getSearchedAllUsers(userName));
+  }
+
   late final _$getAllUsedDepartmentsAsyncAction = AsyncAction(
       '_DepartmentScreenViewModelBase.getAllUsedDepartments',
       context: context);
@@ -35,10 +80,28 @@ mixin _$DepartmentScreenViewModel on _DepartmentScreenViewModelBase, Store {
         .run(() => super.getAllUsedDepartments());
   }
 
+  late final _$_DepartmentScreenViewModelBaseActionController =
+      ActionController(
+          name: '_DepartmentScreenViewModelBase', context: context);
+
+  @override
+  TextEditingController getUserNameController() {
+    final _$actionInfo =
+        _$_DepartmentScreenViewModelBaseActionController.startAction(
+            name: '_DepartmentScreenViewModelBase.getUserNameController');
+    try {
+      return super.getUserNameController();
+    } finally {
+      _$_DepartmentScreenViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-usedDepartments: ${usedDepartments}
+usedDepartments: ${usedDepartments},
+searchedUsersList: ${searchedUsersList},
+userNameControllerText: ${userNameControllerText}
     ''';
   }
 }

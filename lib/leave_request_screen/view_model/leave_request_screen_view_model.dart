@@ -6,6 +6,8 @@ import 'package:hr_app/leave_request_screen/model/apis/delete_pending_leave_api.
 import 'package:hr_app/leave_request_screen/model/apis/get_all_approved_leave_api.dart';
 import 'package:hr_app/leave_request_screen/model/apis/get_all_declined_leave_api.dart';
 import 'package:hr_app/leave_request_screen/model/apis/get_all_pending_leaves_api.dart';
+import 'package:hr_app/leave_request_screen/model/apis/get_approved_leave_by_user_api.dart';
+import 'package:hr_app/leave_request_screen/model/apis/get_declined_leave_by_user_api.dart';
 import 'package:hr_app/leave_request_screen/model/apis/get_pending_leaves_by_users_api.dart';
 import 'package:hr_app/leave_request_screen/model/apis/update_users_leave_day_api.dart';
 import 'package:hr_app/utils/models/approvedLeaves.dart';
@@ -28,6 +30,9 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
   final AddNewDeclinedLeaveApi _addNewDeclinedLeave = AddNewDeclinedLeaveApi();
   final GetAllApprovedLeaveApi _getAllApprovedLeave = GetAllApprovedLeaveApi();
   final GetAllDeclinedLeaveApi _getAllDeclinedLeave = GetAllDeclinedLeaveApi();
+  final GetApprovedLeaveByUserApi _getApprovedLeaveByUser =
+      GetApprovedLeaveByUserApi();
+  final GetDeclinedLeaveByUserApi _getDeclinedLeaveByUser = GetDeclinedLeaveByUserApi();
 
   @observable
   TextEditingController reasonTextController = TextEditingController();
@@ -69,6 +74,12 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
 
   @observable
   ObservableList<DeclinedLeaves> allDeclinedLeavesList = ObservableList();
+
+  @observable
+  ObservableList<ApprovedLeaves> approvedLeavesListByUser = ObservableList();
+
+  @observable
+  ObservableList<DeclinedLeaves> declinedLeavesListByUser = ObservableList();
 
   @action
   Future createNewPendingLeave(
@@ -163,10 +174,10 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
 
   @action
   Future<bool> removePendingLeave(int pendingLeaveId) async {
-    try{
+    try {
       await _deletePendingLeave.deletePendingLeaveApi(pendingLeaveId);
       return true;
-    }catch(e){
+    } catch (e) {
       return false;
     }
   }
@@ -212,7 +223,7 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
     return allApprovedLeavesList;
   }
 
-    @action
+  @action
   Future<List<DeclinedLeaves>> getAllDeclinedLeavesList() async {
     var data = await _getAllDeclinedLeave.getAllDeclinedLeaveApi();
     for (var item in data) {
@@ -223,6 +234,25 @@ abstract class _LeaveRequestScreenViewModelBase with Store {
     return allDeclinedLeavesList;
   }
 
+  @action
+  Future<List<ApprovedLeaves>> getApprovedListLeavesByUser(int userId) async {
+    var data = await _getApprovedLeaveByUser.getApprovedLeaveByUserApi(userId);
+    for (var item in data) {
+      var approveds = ApprovedLeaves.fromJson(item as Map<String, dynamic>);
+      approvedLeavesListByUser.add(approveds);
+    }
 
+    return approvedLeavesListByUser;
+  }
 
+  @action
+  Future<List<DeclinedLeaves>> getDeclinedListLeavesByUser(int userId) async {
+    var data = await _getDeclinedLeaveByUser.getDeclinedLeaveByUserApi(userId);
+    for (var item in data) {
+      var declineds = DeclinedLeaves.fromJson(item as Map<String, dynamic>);
+      declinedLeavesListByUser.add(declineds);
+    }
+
+    return declinedLeavesListByUser;
+  }
 }

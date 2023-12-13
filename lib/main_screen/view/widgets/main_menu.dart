@@ -120,26 +120,31 @@ class _MainMenuState extends State<MainMenu> {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 1.5.h),
-                child: Card(
-                    color: Colors.white38,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Padding(
-                      padding: EdgeInsets.all(4.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "Advance Payment",
-                            style: TextStyle(fontSize: 15.sp),
-                          ),
-                          SizedBox(
-                              height: 10.h,
-                              child: Image.asset(
-                                  "images/advance_payment_logo-removebg.png")),
-                        ],
-                      ),
-                    )),
+                child: GestureDetector(
+                  onTap: (){
+                    Get.toNamed(AppRoutes.ADVANCE_PAYMENT_SCREEN_PATH);
+                  },
+                  child: Card(
+                      color: Colors.white38,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Padding(
+                        padding: EdgeInsets.all(4.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Advance Payment",
+                              style: TextStyle(fontSize: 15.sp),
+                            ),
+                            SizedBox(
+                                height: 10.h,
+                                child: Image.asset(
+                                    "images/advance_payment_logo-removebg.png")),
+                          ],
+                        ),
+                      )),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 1.5.h),

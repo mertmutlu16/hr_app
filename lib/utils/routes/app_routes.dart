@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/add_new_events_screen/view/add_new_events_screen_view.dart';
+import 'package:hr_app/advance_payment_screen/view/advance_payment_screen_view.dart';
 import 'package:hr_app/atomic_widgets/error_screen/error_screen.dart';
 import 'package:hr_app/department_detail_screen/view/department_detail_screen_view.dart';
 import 'package:hr_app/department_info_edit_screen/view/department_info_edit_screen_view.dart';
@@ -39,6 +40,8 @@ class AppRoutes {
   static const DEPARTMENT_SCREEN_PATH = "/DepartmentScreenPath";
   static const DEPARTMENT_DETAIL_SCREEN_PATH = "/DepartmentDetailScreenPath";
   static const LEAVE_REQUEST_SCREEN_PATH = "/LeaveRequestScreenPath";
+  static const ADVANCE_PAYMENT_SCREEN_PATH = "/AdvancePaymentScreenPath";
+
 
 
 
@@ -82,6 +85,8 @@ class AppRoutes {
     getPage(() => const DepartmentScreenView(), DEPARTMENT_SCREEN_PATH),
     getPage(() =>  DepartmentDetailScreenView(userDepartment: Get.arguments), DEPARTMENT_DETAIL_SCREEN_PATH),
     getPage(() => const LeaveRequestScreenView(), LEAVE_REQUEST_SCREEN_PATH),
+    getPage(() => const AdvancePaymentScreenView(), ADVANCE_PAYMENT_SCREEN_PATH),
+
 
 
 

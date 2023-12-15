@@ -5,35 +5,35 @@ import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
 class DepartmentDetailScreenView extends StatefulWidget {
-  final String userDepartment ;
+  final String userDepartment;
 
-   const DepartmentDetailScreenView({ required this.userDepartment});
+  const DepartmentDetailScreenView({required this.userDepartment});
 
   @override
-  State<DepartmentDetailScreenView> createState() => _DepartmentDetailScreenViewState();
+  State<DepartmentDetailScreenView> createState() =>
+      _DepartmentDetailScreenViewState();
 }
 
-class _DepartmentDetailScreenViewState extends State<DepartmentDetailScreenView> {
-  
-  int _selectedBottomNaviIndex =0;
- void _onItemTapped(int index) {
+class _DepartmentDetailScreenViewState
+    extends State<DepartmentDetailScreenView> {
+  int _selectedBottomNaviIndex = 0;
+  void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
 
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
-        
+
           break;
         default:
       }
-      
-      
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class _DepartmentDetailScreenViewState extends State<DepartmentDetailScreenView>
     return AppBar(
       title: Text(
         " ${widget.userDepartment} Department",
-        style: TextStyle(fontWeight: FontWeight.bold ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -60,19 +60,20 @@ class _DepartmentDetailScreenViewState extends State<DepartmentDetailScreenView>
     );
   }
 
-  Widget buildBody(){
+  Widget buildBody() {
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.all(2.h),
-        child:   Column(
+        padding: EdgeInsets.all(2.h),
+        child: Column(
           children: [
-            DepartmentDetaildeUserScreen(userDepartment: widget.userDepartment,),
+            DepartmentDetaildeUserScreen(
+              userDepartment: widget.userDepartment,
+            ),
           ],
         ),
       ),
     );
   }
-
 
   Widget buildBottomNavigatonBar() {
     return BottomNavigationBar(

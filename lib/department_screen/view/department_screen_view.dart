@@ -21,6 +21,8 @@ class _DepartmentScreenViewState extends State<DepartmentScreenView> {
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 
@@ -59,12 +61,10 @@ class _DepartmentScreenViewState extends State<DepartmentScreenView> {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(2.h),
-        child:  const Column(
+        child: const Column(
           children: [
             UserSearchField(),
-            DepartmentMenuScreen(
-              
-            ),
+            DepartmentMenuScreen(),
           ],
         ),
       ),

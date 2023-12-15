@@ -14,26 +14,24 @@ class ProfileScreenView extends StatefulWidget {
 }
 
 class _ProfileScreenViewState extends State<ProfileScreenView> {
-
-  int _selectedBottomNaviIndex =2;
- void _onItemTapped(int index) {
+  int _selectedBottomNaviIndex = 2;
+  void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
 
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
-        
+
           break;
         default:
       }
-      
-      
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +46,7 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
     return AppBar(
       title: const Text(
         "Profile",
-        style: TextStyle(fontWeight: FontWeight.bold ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -60,11 +58,11 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
     );
   }
 
-  Widget buildBody(){
+  Widget buildBody() {
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.all(2.h),
-        child:const  Column(
+        padding: EdgeInsets.all(2.h),
+        child: const Column(
           children: [
             UserDefine(),
             ProfileCard(),
@@ -74,7 +72,6 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
       ),
     );
   }
-
 
   Widget buildBottomNavigatonBar() {
     return BottomNavigationBar(

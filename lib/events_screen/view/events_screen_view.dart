@@ -12,8 +12,6 @@ class EventsScreenView extends StatefulWidget {
 }
 
 class _EventsScreenViewState extends State<EventsScreenView> {
-
-
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -22,6 +20,8 @@ class _EventsScreenViewState extends State<EventsScreenView> {
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 
@@ -30,7 +30,6 @@ class _EventsScreenViewState extends State<EventsScreenView> {
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,7 @@ class _EventsScreenViewState extends State<EventsScreenView> {
     return AppBar(
       title: const Text(
         "Events",
-        style: TextStyle(fontWeight: FontWeight.bold ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -57,14 +56,14 @@ class _EventsScreenViewState extends State<EventsScreenView> {
     );
   }
 
-  Widget buildBody(){
+  Widget buildBody() {
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.all(2.h),
-        child:  const SingleChildScrollView(
-          child:Column(
+        padding: EdgeInsets.all(2.h),
+        child: const SingleChildScrollView(
+          child: Column(
             children: [
-             EventsMenuScreen(),
+              EventsMenuScreen(),
             ],
           ),
         ),
@@ -95,6 +94,4 @@ class _EventsScreenViewState extends State<EventsScreenView> {
       onTap: _onItemTapped,
     );
   }
-
-  
 }

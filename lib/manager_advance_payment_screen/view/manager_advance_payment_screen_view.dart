@@ -8,12 +8,12 @@ class ManagerAdvancePaymentScreenView extends StatefulWidget {
   const ManagerAdvancePaymentScreenView({super.key});
 
   @override
-  State<ManagerAdvancePaymentScreenView> createState() => _ManagerAdvancePaymentScreenViewState();
+  State<ManagerAdvancePaymentScreenView> createState() =>
+      _ManagerAdvancePaymentScreenViewState();
 }
 
-class _ManagerAdvancePaymentScreenViewState extends State<ManagerAdvancePaymentScreenView> {
-
-    
+class _ManagerAdvancePaymentScreenViewState
+    extends State<ManagerAdvancePaymentScreenView> {
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -22,6 +22,8 @@ class _ManagerAdvancePaymentScreenViewState extends State<ManagerAdvancePaymentS
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 
@@ -30,8 +32,7 @@ class _ManagerAdvancePaymentScreenViewState extends State<ManagerAdvancePaymentS
       }
     });
   }
-  
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +46,7 @@ class _ManagerAdvancePaymentScreenViewState extends State<ManagerAdvancePaymentS
     return AppBar(
       title: const Text(
         "Advance Payments",
-        style: TextStyle(fontWeight: FontWeight.bold ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -57,12 +58,12 @@ class _ManagerAdvancePaymentScreenViewState extends State<ManagerAdvancePaymentS
     );
   }
 
-  Widget buildBody(){
+  Widget buildBody() {
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.all(2.h),
-        child:  const SingleChildScrollView(
-          child:Column(
+        padding: EdgeInsets.all(2.h),
+        child: const SingleChildScrollView(
+          child: Column(
             children: [
               AdvancePaymentsPendingApproval(),
             ],

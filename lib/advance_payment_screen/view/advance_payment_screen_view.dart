@@ -9,12 +9,11 @@ class AdvancePaymentScreenView extends StatefulWidget {
   const AdvancePaymentScreenView({super.key});
 
   @override
-  State<AdvancePaymentScreenView> createState() => _AdvancePaymentScreenViewState();
+  State<AdvancePaymentScreenView> createState() =>
+      _AdvancePaymentScreenViewState();
 }
 
 class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
-  
-  
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -23,6 +22,8 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 
@@ -31,8 +32,7 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
       }
     });
   }
-  
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +46,7 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
     return AppBar(
       title: const Text(
         "Advance Payment",
-        style: TextStyle(fontWeight: FontWeight.bold ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -58,12 +58,12 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
     );
   }
 
-  Widget buildBody(){
+  Widget buildBody() {
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.all(2.h),
-        child:  const SingleChildScrollView(
-          child:Column(
+        padding: EdgeInsets.all(2.h),
+        child: const SingleChildScrollView(
+          child: Column(
             children: [
               AdvancePaymentRequestArea(),
               AdvancePaymentHistory(),

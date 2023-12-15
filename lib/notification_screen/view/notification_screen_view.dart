@@ -1,40 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hr_app/add_new_events_screen/view/widgets/create_new_event_button.dart';
-import 'package:hr_app/add_new_events_screen/view/widgets/event_day_input.dart';
-import 'package:hr_app/add_new_events_screen/view/widgets/event_description_input.dart';
-import 'package:hr_app/add_new_events_screen/view/widgets/event_location_input.dart';
-import 'package:hr_app/add_new_events_screen/view/widgets/event_name_input.dart';
-import 'package:hr_app/add_new_events_screen/view/widgets/event_time_input.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
-class AddNewEventsScreenView extends StatefulWidget {
-  const AddNewEventsScreenView({super.key});
+class NotificationScreenView extends StatefulWidget {
+  const NotificationScreenView({super.key});
 
   @override
-  State<AddNewEventsScreenView> createState() => _AddNewEventsScreenViewState();
+  State<NotificationScreenView> createState() => _NotificationScreenViewState();
 }
 
-class _AddNewEventsScreenViewState extends State<AddNewEventsScreenView> {
-  int _selectedBottomNaviIndex = 0;
-  void _onItemTapped(int index) {
+class _NotificationScreenViewState extends State<NotificationScreenView> {
+ 
+  int _selectedBottomNaviIndex =1;
+ void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
 
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
-        case 1:
-          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
-
+        
           break;
         default:
       }
+      
+      
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +44,8 @@ class _AddNewEventsScreenViewState extends State<AddNewEventsScreenView> {
   AppBar buildAppBar() {
     return AppBar(
       title: const Text(
-        "Add New Event",
-        style: TextStyle(fontWeight: FontWeight.bold),
+        "Notifications",
+        style: TextStyle(fontWeight: FontWeight.bold ),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -61,25 +57,19 @@ class _AddNewEventsScreenViewState extends State<AddNewEventsScreenView> {
     );
   }
 
-  Widget buildBody() {
+  Widget buildBody(){
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(2.h),
-        child: const SingleChildScrollView(
-          child: Column(
-            children: [
-              EventNameInput(),
-              EventDescriptionInput(),
-              EventLocationInput(),
-              EventDayInput(),
-              EventTimeInput(),
-              CreateNewEventButton(),
-            ],
-          ),
+        padding:  EdgeInsets.all(2.h),
+        child:const  Column(
+          children: [
+            Text("data"),
+          ],
         ),
       ),
     );
   }
+
 
   Widget buildBottomNavigatonBar() {
     return BottomNavigationBar(

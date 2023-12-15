@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hr_app/notification_screen/view/widgets/notifications_menu_screen.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -11,9 +12,8 @@ class NotificationScreenView extends StatefulWidget {
 }
 
 class _NotificationScreenViewState extends State<NotificationScreenView> {
- 
-  int _selectedBottomNaviIndex =1;
- void _onItemTapped(int index) {
+  int _selectedBottomNaviIndex = 1;
+  void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
 
@@ -22,15 +22,12 @@ class _NotificationScreenViewState extends State<NotificationScreenView> {
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
-        
+
           break;
         default:
       }
-      
-      
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +42,7 @@ class _NotificationScreenViewState extends State<NotificationScreenView> {
     return AppBar(
       title: const Text(
         "Notifications",
-        style: TextStyle(fontWeight: FontWeight.bold ),
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -57,19 +54,18 @@ class _NotificationScreenViewState extends State<NotificationScreenView> {
     );
   }
 
-  Widget buildBody(){
+  Widget buildBody() {
     return SingleChildScrollView(
       child: Padding(
-        padding:  EdgeInsets.all(2.h),
-        child:const  Column(
+        padding: EdgeInsets.all(2.h),
+        child: const Column(
           children: [
-            Text("data"),
+            NotificationMenuScreen(),
           ],
         ),
       ),
     );
   }
-
 
   Widget buildBottomNavigatonBar() {
     return BottomNavigationBar(

@@ -28,6 +28,27 @@ mixin _$AdvancePaymentScreenViewModel
     });
   }
 
+  late final _$approvedAdvancePaymentsListByUserAtom = Atom(
+      name:
+          '_AdvancePaymentScreenViewModelBase.approvedAdvancePaymentsListByUser',
+      context: context);
+
+  @override
+  ObservableList<ApprovedAdvancePayments>
+      get approvedAdvancePaymentsListByUser {
+    _$approvedAdvancePaymentsListByUserAtom.reportRead();
+    return super.approvedAdvancePaymentsListByUser;
+  }
+
+  @override
+  set approvedAdvancePaymentsListByUser(
+      ObservableList<ApprovedAdvancePayments> value) {
+    _$approvedAdvancePaymentsListByUserAtom
+        .reportWrite(value, super.approvedAdvancePaymentsListByUser, () {
+      super.approvedAdvancePaymentsListByUser = value;
+    });
+  }
+
   late final _$createNewAdvancePaymentAsyncAction = AsyncAction(
       '_AdvancePaymentScreenViewModelBase.createNewAdvancePayment',
       context: context);
@@ -58,6 +79,16 @@ mixin _$AdvancePaymentScreenViewModel
         .run(() => super.getAdvancePaymentsByUserBool(userId));
   }
 
+  late final _$getApprovedAdvancePaymentsByUserBoolAsyncAction = AsyncAction(
+      '_AdvancePaymentScreenViewModelBase.getApprovedAdvancePaymentsByUserBool',
+      context: context);
+
+  @override
+  Future<dynamic> getApprovedAdvancePaymentsByUserBool(int userId) {
+    return _$getApprovedAdvancePaymentsByUserBoolAsyncAction
+        .run(() => super.getApprovedAdvancePaymentsByUserBool(userId));
+  }
+
   late final _$getAdvancePaymentsByUserAsyncAction = AsyncAction(
       '_AdvancePaymentScreenViewModelBase.getAdvancePaymentsByUser',
       context: context);
@@ -68,10 +99,22 @@ mixin _$AdvancePaymentScreenViewModel
         .run(() => super.getAdvancePaymentsByUser(userId));
   }
 
+  late final _$getApprovedAdvancePaymentsByUserAsyncAction = AsyncAction(
+      '_AdvancePaymentScreenViewModelBase.getApprovedAdvancePaymentsByUser',
+      context: context);
+
+  @override
+  Future<List<ApprovedAdvancePayments>> getApprovedAdvancePaymentsByUser(
+      int userId) {
+    return _$getApprovedAdvancePaymentsByUserAsyncAction
+        .run(() => super.getApprovedAdvancePaymentsByUser(userId));
+  }
+
   @override
   String toString() {
     return '''
-advancePaymentsListByUser: ${advancePaymentsListByUser}
+advancePaymentsListByUser: ${advancePaymentsListByUser},
+approvedAdvancePaymentsListByUser: ${approvedAdvancePaymentsListByUser}
     ''';
   }
 }

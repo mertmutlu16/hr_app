@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hr_app/advance_payment_screen/view/widgets/advance_payment_history.dart';
-import 'package:hr_app/advance_payment_screen/view/widgets/advance_payment_request_area.dart';
+import 'package:hr_app/manager_advance_payment_screen/view/widgets/advance_payments_pending_approval.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
-class AdvancePaymentScreenView extends StatefulWidget {
-  const AdvancePaymentScreenView({super.key});
+class ManagerAdvancePaymentScreenView extends StatefulWidget {
+  const ManagerAdvancePaymentScreenView({super.key});
 
   @override
-  State<AdvancePaymentScreenView> createState() => _AdvancePaymentScreenViewState();
+  State<ManagerAdvancePaymentScreenView> createState() => _ManagerAdvancePaymentScreenViewState();
 }
 
-class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
-  
-  
+class _ManagerAdvancePaymentScreenViewState extends State<ManagerAdvancePaymentScreenView> {
+
+    
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -45,7 +44,7 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
   AppBar buildAppBar() {
     return AppBar(
       title: const Text(
-        "Advance Payment",
+        "Advance Payments",
         style: TextStyle(fontWeight: FontWeight.bold ),
       ),
       centerTitle: true,
@@ -65,8 +64,7 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
         child:  const SingleChildScrollView(
           child:Column(
             children: [
-              AdvancePaymentRequestArea(),
-              AdvancePaymentHistory(),
+              AdvancePaymentsPendingApproval(),
             ],
           ),
         ),

@@ -93,6 +93,17 @@ mixin _$LoginScreenViewModel on _LoginScreenViewModelBase, Store {
   }
 
   @override
+  int? getLeaveDay() {
+    final _$actionInfo = _$_LoginScreenViewModelBaseActionController
+        .startAction(name: '_LoginScreenViewModelBase.getLeaveDay');
+    try {
+      return super.getLeaveDay();
+    } finally {
+      _$_LoginScreenViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 emailTextController: ${emailTextController},

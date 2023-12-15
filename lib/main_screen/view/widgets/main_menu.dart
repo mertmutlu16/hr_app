@@ -122,7 +122,12 @@ class _MainMenuState extends State<MainMenu> {
                 padding: EdgeInsets.only(bottom: 1.5.h),
                 child: GestureDetector(
                   onTap: (){
+                    if (loginScreenViewModel.user!.department ==
+                        "Human Resources") {
+                      Get.toNamed(AppRoutes.MANAGER_ADVANCE_PAYMENT_SCREEN_PATH);
+                    } else {
                     Get.toNamed(AppRoutes.ADVANCE_PAYMENT_SCREEN_PATH);
+                    }
                   },
                   child: Card(
                       color: Colors.white38,

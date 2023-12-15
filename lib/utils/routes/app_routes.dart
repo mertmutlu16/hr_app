@@ -15,6 +15,7 @@ import 'package:hr_app/fullname_info_edit_screen/view/fullname_info_edit_screen_
 import 'package:hr_app/leave_request_screen/view/leave_request_screen_view.dart';
 import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
+import 'package:hr_app/manager_advance_payment_screen/view/manager_advance_payment_screen_view.dart';
 import 'package:hr_app/manager_events_screen/view/manager_events_screen_view.dart';
 import 'package:hr_app/phone_info_edit_screen/view/phone_info_edit_screen_view.dart';
 import 'package:hr_app/profile_screen/view/profile_screen_view.dart';
@@ -41,6 +42,8 @@ class AppRoutes {
   static const DEPARTMENT_DETAIL_SCREEN_PATH = "/DepartmentDetailScreenPath";
   static const LEAVE_REQUEST_SCREEN_PATH = "/LeaveRequestScreenPath";
   static const ADVANCE_PAYMENT_SCREEN_PATH = "/AdvancePaymentScreenPath";
+  static const MANAGER_ADVANCE_PAYMENT_SCREEN_PATH = "/ManagerAdvancePaymentScreenPath";
+
 
 
 
@@ -86,6 +89,7 @@ class AppRoutes {
     getPage(() =>  DepartmentDetailScreenView(userDepartment: Get.arguments), DEPARTMENT_DETAIL_SCREEN_PATH),
     getPage(() => const LeaveRequestScreenView(), LEAVE_REQUEST_SCREEN_PATH),
     getPage(() => const AdvancePaymentScreenView(), ADVANCE_PAYMENT_SCREEN_PATH),
+    getPage(() => const ManagerAdvancePaymentScreenView(), MANAGER_ADVANCE_PAYMENT_SCREEN_PATH),
 
 
 

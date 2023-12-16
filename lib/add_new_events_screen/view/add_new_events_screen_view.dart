@@ -6,6 +6,8 @@ import 'package:hr_app/add_new_events_screen/view/widgets/event_description_inpu
 import 'package:hr_app/add_new_events_screen/view/widgets/event_location_input.dart';
 import 'package:hr_app/add_new_events_screen/view/widgets/event_name_input.dart';
 import 'package:hr_app/add_new_events_screen/view/widgets/event_time_input.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -17,6 +19,8 @@ class AddNewEventsScreenView extends StatefulWidget {
 }
 
 class _AddNewEventsScreenViewState extends State<AddNewEventsScreenView> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -26,7 +30,11 @@ class _AddNewEventsScreenViewState extends State<AddNewEventsScreenView> {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
         case 1:
-          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          if (loginScreenViewModel.user!.department == "Human Resources") {
+            Get.toNamed(AppRoutes.MANAGER_NOTIFICATON_SCREEN_PATH);
+          } else {
+            Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          }
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 

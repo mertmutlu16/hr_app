@@ -17,6 +17,7 @@ import 'package:hr_app/login_screen/view/login_screen_view.dart';
 import 'package:hr_app/main_screen/view/main_screen_view.dart';
 import 'package:hr_app/manager_advance_payment_screen/view/manager_advance_payment_screen_view.dart';
 import 'package:hr_app/manager_events_screen/view/manager_events_screen_view.dart';
+import 'package:hr_app/manager_notification_screen/view/manager_notification_screen_view.dart';
 import 'package:hr_app/notification_screen/view/notification_screen_view.dart';
 import 'package:hr_app/phone_info_edit_screen/view/phone_info_edit_screen_view.dart';
 import 'package:hr_app/profile_screen/view/profile_screen_view.dart';
@@ -45,6 +46,8 @@ class AppRoutes {
   static const ADVANCE_PAYMENT_SCREEN_PATH = "/AdvancePaymentScreenPath";
   static const MANAGER_ADVANCE_PAYMENT_SCREEN_PATH = "/ManagerAdvancePaymentScreenPath";
   static const NOTIFICATON_SCREEN_PATH = "/NotificationScreenPath";
+  static const MANAGER_NOTIFICATON_SCREEN_PATH = "/ManagerNotificationScreenPath";
+
 
 
 
@@ -94,6 +97,8 @@ class AppRoutes {
     getPage(() => const AdvancePaymentScreenView(), ADVANCE_PAYMENT_SCREEN_PATH),
     getPage(() => const ManagerAdvancePaymentScreenView(), MANAGER_ADVANCE_PAYMENT_SCREEN_PATH),
     getPage(() => const NotificationScreenView(), NOTIFICATON_SCREEN_PATH),
+    getPage(() => const ManagerNotificationScreenView(), MANAGER_NOTIFICATON_SCREEN_PATH),
+
 
 
 

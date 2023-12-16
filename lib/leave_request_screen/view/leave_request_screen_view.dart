@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/leave_request_screen/view/widgets/custom_tab_bar.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -12,6 +14,8 @@ class LeaveRequestScreenView extends StatefulWidget {
 }
 
 class _LeaveRequestScreenViewState extends State<LeaveRequestScreenView> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -21,7 +25,11 @@ class _LeaveRequestScreenViewState extends State<LeaveRequestScreenView> {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
         case 1:
-          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          if (loginScreenViewModel.user!.department == "Human Resources") {
+            Get.toNamed(AppRoutes.MANAGER_NOTIFICATON_SCREEN_PATH);
+          } else {
+            Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          }
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 

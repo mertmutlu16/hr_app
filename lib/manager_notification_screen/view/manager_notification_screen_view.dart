@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
-import 'package:hr_app/main_screen/view/widgets/main_menu.dart';
+import 'package:hr_app/manager_notification_screen/view/widgets/description_input.dart';
+import 'package:hr_app/manager_notification_screen/view/widgets/create_new_notification_button.dart';
+import 'package:hr_app/manager_notification_screen/view/widgets/notification_user_input.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
-class MainScreenView extends StatefulWidget {
-  const MainScreenView({super.key});
+class ManagerNotificationScreenView extends StatefulWidget {
+  const ManagerNotificationScreenView({super.key});
 
   @override
-  State<MainScreenView> createState() => _MainScreenViewState();
+  State<ManagerNotificationScreenView> createState() =>
+      _ManagerNotificationScreenViewState();
 }
 
-class _MainScreenViewState extends State<MainScreenView> {
+class _ManagerNotificationScreenViewState
+    extends State<ManagerNotificationScreenView> {
   final loginScreenViewModel = locator<LoginScreenViewModel>();
 
-  int _selectedBottomNaviIndex = 0;
+  int _selectedBottomNaviIndex = 1;
   void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
@@ -50,46 +53,19 @@ class _MainScreenViewState extends State<MainScreenView> {
   }
 
   AppBar buildAppBar() {
-    String greeting = getGreeting();
     return AppBar(
-      leading: Padding(
-        padding: EdgeInsets.only(left: 2.5.h),
-        child: Image.asset("images/app_logo.png"),
-      ),
-      title: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            " $greeting ,",
-            style: TextStyle(
-                fontSize: 18.sp, color: const Color.fromARGB(1000, 241, 0, 77)),
-          ),
-          Observer(
-            builder: (_) {
-              return Text(
-                " ${loginScreenViewModel.user!.fullname} ",
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    color: const Color.fromARGB(1000, 241, 0, 77)),
-              );
-            },
-          ),
-        ],
+      title: const Text(
+        "Add New Notification",
+        style: TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
+      leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: const Icon(Icons.arrow_back),
+      ),
     );
-  }
-
-  String getGreeting() {
-    DateTime now = DateTime.now();
-    int hour = now.hour;
-    if (hour >= 6 && hour < 12) {
-      return 'Good Mornings ';
-    } else if (hour >= 12 && hour < 18) {
-      return 'Good Days';
-    } else {
-      return 'Good Evenings';
-    }
   }
 
   Widget buildBody() {
@@ -98,7 +74,9 @@ class _MainScreenViewState extends State<MainScreenView> {
         padding: EdgeInsets.all(2.h),
         child: const Column(
           children: [
-            MainMenu(),
+            DescriptionInput(),
+            NotificationUserInput(),
+            CreateNewNotificationButton(),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/notification_screen/view/widgets/notifications_menu_screen.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -12,6 +14,7 @@ class NotificationScreenView extends StatefulWidget {
 }
 
 class _NotificationScreenViewState extends State<NotificationScreenView> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
   int _selectedBottomNaviIndex = 1;
   void _onItemTapped(int index) {
     setState(() {
@@ -20,6 +23,12 @@ class _NotificationScreenViewState extends State<NotificationScreenView> {
       switch (_selectedBottomNaviIndex) {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          if (loginScreenViewModel.user!.department == "Human Resources") {
+            Get.toNamed(AppRoutes.MANAGER_NOTIFICATON_SCREEN_PATH);
+          } else {
+            Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          }
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 

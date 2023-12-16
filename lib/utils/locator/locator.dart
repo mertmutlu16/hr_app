@@ -12,6 +12,7 @@ import 'package:hr_app/leave_request_screen/view_model/leave_request_screen_view
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/manager_advance_payment_screen/view_model/manager_advance_payment_screen_view_model.dart';
 import 'package:hr_app/manager_events_screen/view_model/manager_events_screen_view_model.dart';
+import 'package:hr_app/manager_notification_screen/view_model/manager_notification_screen_view_model.dart';
 import 'package:hr_app/notification_screen/view_model/notification_screen_view_model.dart';
 import 'package:hr_app/phone_info_edit_screen/view_model/phone_info_edit_screen_view_model.dart';
 import 'package:hr_app/signup_screen/view_model/signup_screen_view_model.dart';
@@ -35,6 +36,8 @@ void setupLocator(){
   locator.registerLazySingleton<AdvancePaymentScreenViewModel>(() => AdvancePaymentScreenViewModel());
   locator.registerLazySingleton<ManagerAdvancePaymentScreenViewModel>(() => ManagerAdvancePaymentScreenViewModel());
   locator.registerLazySingleton<NotificationScreenViewModel>(() => NotificationScreenViewModel());
+  locator.registerLazySingleton<ManagerNotificationScreenViewModel>(() => ManagerNotificationScreenViewModel());
+
 
 
 

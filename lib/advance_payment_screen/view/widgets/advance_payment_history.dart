@@ -20,21 +20,33 @@ class _AdvancePaymentHistoryState extends State<AdvancePaymentHistory> {
   final loginScreenViewModel = locator<LoginScreenViewModel>();
   final GenerateMonthAndYear _generateMonthAndYear = GenerateMonthAndYear();
   bool _customIcon = false;
-  int? advancePaymentByUserOldLength;
-  int? firstPaymentMonth;
-  int? installmentMonth;
+
+
+  bool isFirstTime = true;
 
   @override
   void initState() {
-    super.initState();
     if (advancePaymentScreenViewModel
         .approvedAdvancePaymentsListByUser.isEmpty) {
       advancePaymentScreenViewModel
           .getApprovedAdvancePaymentsByUser(loginScreenViewModel.user!.id);
+      isFirstTime = false;
     }
+
+    super.initState();
   }
 
-  
+  @override
+  void didChangeDependencies() {
+    if (isFirstTime) {
+      setState(() {
+        advancePaymentScreenViewModel.approvedAdvancePaymentsListByUser.clear();
+        advancePaymentScreenViewModel
+            .getApprovedAdvancePaymentsByUser(loginScreenViewModel.user!.id);
+      });
+    }
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +91,6 @@ class _AdvancePaymentHistoryState extends State<AdvancePaymentHistory> {
                         width: .1.h,
                       ),
                     ),
-                    
                     child: Padding(
                       padding: EdgeInsets.only(top: 1.5.h),
                       child: Column(
@@ -141,4 +152,3 @@ class _AdvancePaymentHistoryState extends State<AdvancePaymentHistory> {
     );
   }
 }
-

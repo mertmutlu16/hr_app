@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/department_detail_screen/view/widgets/department_detailed_user_screen.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,6 +18,8 @@ class DepartmentDetailScreenView extends StatefulWidget {
 
 class _DepartmentDetailScreenViewState
     extends State<DepartmentDetailScreenView> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -25,7 +29,11 @@ class _DepartmentDetailScreenViewState
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
         case 1:
-          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          if (loginScreenViewModel.user!.department == "Human Resources") {
+            Get.toNamed(AppRoutes.MANAGER_NOTIFICATON_SCREEN_PATH);
+          } else {
+            Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          }
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:hr_app/leave_request_screen/view_model/leave_request_screen_view_model.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/manager_notification_screen/view_model/manager_notification_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:sizer/sizer.dart';
 
@@ -15,6 +16,8 @@ class ManagerPendingScreen extends StatefulWidget {
 class _ManagerPendingScreenState extends State<ManagerPendingScreen> {
   final leaveRequestScreenViewModel = locator<LeaveRequestScreenViewModel>();
   final loginScreenViewModel = locator<LoginScreenViewModel>();
+  final managerNotificationScreenViewModel =
+      locator<ManagerNotificationScreenViewModel>();
 
   int? allPendingLeavesListOldLength;
 
@@ -106,6 +109,16 @@ class _ManagerPendingScreenState extends State<ManagerPendingScreen> {
 
                               if (isApproved) {
                                 setState(() async {
+                                  await managerNotificationScreenViewModel
+                                      .createNewNotification(
+                                          "Your leave Request is approved. Have a nice holiday!",
+                                          leaveRequestScreenViewModel
+                                              .pendingLeavesList[index].userId,
+                                          loginScreenViewModel.user!.id,
+                                          loginScreenViewModel.user!.fullname,
+                                          loginScreenViewModel
+                                              .user!.department);
+
                                   await leaveRequestScreenViewModel
                                       .removePendingLeave(
                                           leaveRequestScreenViewModel
@@ -115,6 +128,7 @@ class _ManagerPendingScreenState extends State<ManagerPendingScreen> {
                                   leaveRequestScreenViewModel
                                       .getAllPendingLeavesList();
                                 });
+
                                 // ignore: use_build_context_synchronously
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
@@ -167,6 +181,16 @@ class _ManagerPendingScreenState extends State<ManagerPendingScreen> {
 
                               if (isDeclined) {
                                 setState(() async {
+                                  await managerNotificationScreenViewModel
+                                      .createNewNotification(
+                                          "Your leave Request is declined!",
+                                          leaveRequestScreenViewModel
+                                              .pendingLeavesList[index].userId,
+                                          loginScreenViewModel.user!.id,
+                                          loginScreenViewModel.user!.fullname,
+                                          loginScreenViewModel
+                                              .user!.department);
+
                                   await leaveRequestScreenViewModel
                                       .removePendingLeave(
                                           leaveRequestScreenViewModel

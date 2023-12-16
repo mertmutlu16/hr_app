@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/manager_advance_payment_screen/view_model/manager_advance_payment_screen_view_model.dart';
+import 'package:hr_app/manager_notification_screen/view_model/manager_notification_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:sizer/sizer.dart';
 
@@ -18,6 +19,8 @@ class _AdvancePaymentsPendingApprovalState
   final managerAdvancePaymentScreenViewModel =
       locator<ManagerAdvancePaymentScreenViewModel>();
   final loginScreenViewModel = locator<LoginScreenViewModel>();
+  final managerNotificationScreenViewModel =
+      locator<ManagerNotificationScreenViewModel>();
 
   int? advancePaymentByUserOldLength;
 
@@ -120,6 +123,17 @@ class _AdvancePaymentsPendingApprovalState
 
                                 if (isApproved) {
                                   setState(() async {
+                                    await managerNotificationScreenViewModel
+                                        .createNewNotification(
+                                            "Your advance payment request is approved. You can get your money from accounting",
+                                            managerAdvancePaymentScreenViewModel
+                                                .allAdvancePaymentList[index]
+                                                .userId,
+                                            loginScreenViewModel.user!.id,
+                                            loginScreenViewModel.user!.fullname,
+                                            loginScreenViewModel
+                                                .user!.department);
+
                                     await managerAdvancePaymentScreenViewModel
                                         .removeAdvancePayment(
                                             managerAdvancePaymentScreenViewModel
@@ -136,6 +150,17 @@ class _AdvancePaymentsPendingApprovalState
                               } else if (direction ==
                                   DismissDirection.endToStart) {
                                 setState(() async {
+                                  await managerNotificationScreenViewModel
+                                      .createNewNotification(
+                                          "Your advance payment request is declined!",
+                                          managerAdvancePaymentScreenViewModel
+                                              .allAdvancePaymentList[index]
+                                              .userId,
+                                          loginScreenViewModel.user!.id,
+                                          loginScreenViewModel.user!.fullname,
+                                          loginScreenViewModel
+                                              .user!.department);
+
                                   await managerAdvancePaymentScreenViewModel
                                       .removeAdvancePayment(
                                           managerAdvancePaymentScreenViewModel

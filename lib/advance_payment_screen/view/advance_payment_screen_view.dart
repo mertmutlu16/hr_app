@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/advance_payment_screen/view/widgets/advance_payment_history.dart';
 import 'package:hr_app/advance_payment_screen/view/widgets/advance_payment_request_area.dart';
+import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
+import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,6 +16,8 @@ class AdvancePaymentScreenView extends StatefulWidget {
 }
 
 class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -23,7 +27,11 @@ class _AdvancePaymentScreenViewState extends State<AdvancePaymentScreenView> {
         case 0:
           Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
         case 1:
-          Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          if (loginScreenViewModel.user!.department == "Human Resources") {
+            Get.toNamed(AppRoutes.MANAGER_NOTIFICATON_SCREEN_PATH);
+          } else {
+            Get.toNamed(AppRoutes.NOTIFICATON_SCREEN_PATH);
+          }
         case 2:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
 

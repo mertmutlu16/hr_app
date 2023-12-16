@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_router.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
 import 'package:sizer/sizer.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: '.env');
   setupLocator();
   runApp(const MyApp());
 }

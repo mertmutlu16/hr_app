@@ -31,7 +31,7 @@ class AddNewEventApi {
     );
 
     if (response.statusCode == 201) {
-      print("New event created");
+      //print("New event created");
     } else {
       throw Exception('Veri gönderme basarisiz: ${response.statusCode}');
     }

@@ -42,7 +42,7 @@ class UserSignupApi {
     //print("RESPONSE :  ${response.body} ");
 
     if(response.statusCode == 201){
-      print("New user created");
+     // print("New user created");
     }else {
       throw Exception('Veri çekme başarısız: ${response.statusCode}');
 

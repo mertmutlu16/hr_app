@@ -56,7 +56,7 @@ class _DepartmentDetailScreenViewState
     return AppBar(
       title: Text(
         " ${widget.userDepartment} Department",
-        style: TextStyle(fontWeight: FontWeight.bold),
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
       leading: IconButton(

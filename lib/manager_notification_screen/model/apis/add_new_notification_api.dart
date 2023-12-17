@@ -29,7 +29,7 @@ class AddNewNotificationApi {
     );
 
     if (response.statusCode == 201) {
-      print("New notification created");
+      //print("New notification created");
     } else {
       throw Exception('Veri gönderme basarisiz: ${response.statusCode}');
     }

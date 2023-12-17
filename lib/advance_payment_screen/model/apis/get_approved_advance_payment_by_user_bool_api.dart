@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 
-import 'dart:convert';
 
 class GetApprovedAdvancePaymentByUserBoolApi {
   Future getApprovedAdvancePaymentByUserBoolApi(int userId) async {

@@ -18,7 +18,6 @@ abstract class _EventsScreenViewModelBase with Store {
     for(var item in data){
 
       var event=Events.fromJson(item as Map<String , dynamic>);
-      print( "liste :  ${event.eventName}");
       eventList.add(event);
     }
     

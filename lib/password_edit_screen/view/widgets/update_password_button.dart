@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get/get.dart';
-import 'package:hr_app/login_screen/model/apis/user_verification_api.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:hr_app/password_edit_screen/view_model/password_edit_screen_view_model.dart';
 import 'package:hr_app/utils/locator/locator.dart';

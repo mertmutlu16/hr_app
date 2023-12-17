@@ -18,14 +18,11 @@ class _TaskMenuState extends State<TaskMenu> {
   final loginScreenViewModel = locator<LoginScreenViewModel>();
 
   bool isFirstTime = true;
-  bool isOKForUser = false;
   @override
   void initState() {
     if (taskManagerScreenViewModel.tasksList.isEmpty) {
       taskManagerScreenViewModel.getTaskFromNotion();
       isFirstTime = false;
-      isOKForUser = taskManagerScreenViewModel.tasksList
-          .contains(loginScreenViewModel.user!.department);
     }
     super.initState();
   }
@@ -35,8 +32,6 @@ class _TaskMenuState extends State<TaskMenu> {
     if (isFirstTime) {
       taskManagerScreenViewModel.tasksList.clear();
       taskManagerScreenViewModel.getTaskFromNotion();
-      isOKForUser = taskManagerScreenViewModel.tasksList
-          .contains(loginScreenViewModel.user!.department);
     }
     super.didChangeDependencies();
   }
@@ -52,13 +47,6 @@ class _TaskMenuState extends State<TaskMenu> {
             height: 64.h,
             child: Observer(builder: (_) {
               if (taskManagerScreenViewModel.tasksList.isEmpty) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                        Color.fromARGB(1000, 241, 0, 77)),
-                  ),
-                );
-              } else if (!isOKForUser) {
                 return Center(
                   child: Text("You don't have any tasks right now",
                       style: TextStyle(

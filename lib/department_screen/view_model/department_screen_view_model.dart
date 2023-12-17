@@ -49,7 +49,7 @@ abstract class _DepartmentScreenViewModelBase with Store {
       List<String> result = await _getDepartments.departmentApi();
       usedDepartments.addAll(result);
     } catch (error) {
-      print('Error: $error');
+      throw Exception('$error');
     }
   }
 }

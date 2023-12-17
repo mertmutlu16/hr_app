@@ -1,7 +1,5 @@
 import 'package:http/http.dart' as http;
 
-import 'dart:convert';
-
 class GetAdvancePaymentByUserBoolApi {
   Future getAdvancePaymentByUserBoolApi(int userId) async {
     var url =
@@ -10,10 +8,9 @@ class GetAdvancePaymentByUserBoolApi {
     var response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-
       return true;
     } else {
-      return false ;
+      return false;
     }
   }
 }

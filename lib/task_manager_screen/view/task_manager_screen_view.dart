@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hr_app/login_screen/view_model/login_screen_view_model.dart';
-import 'package:hr_app/task_manager_screen/model/apis/get_tasks_api.dart';
 import 'package:hr_app/task_manager_screen/view/widgets/task_menu.dart';
 import 'package:hr_app/utils/locator/locator.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';

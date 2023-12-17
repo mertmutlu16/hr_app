@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hr_app/utils/routes/app_routes.dart';
@@ -19,6 +21,7 @@ class _LogoutButtonState extends State<LogoutButton> {
           padding: EdgeInsets.only(top: 4.h, left: 0.9.h, right: 0.9.h),
           child: ElevatedButton(
             onPressed: () {
+              //exit(0);
               Get.offNamedUntil(AppRoutes.LOGIN_SCREEN_PATH, (route) => false);
             },
             style: ElevatedButton.styleFrom(

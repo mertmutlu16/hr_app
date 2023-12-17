@@ -44,7 +44,7 @@ class _TaskMenuState extends State<TaskMenu> {
           height: 2.5.h,
         ),
         SizedBox(
-            height: 50.h,
+            height: 64.h,
             child: Observer(builder: (_) {
               return ListView.builder(
                   itemCount: taskManagerScreenViewModel.tasksList.length,

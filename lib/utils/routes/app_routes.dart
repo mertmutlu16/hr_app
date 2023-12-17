@@ -19,6 +19,7 @@ import 'package:hr_app/manager_advance_payment_screen/view/manager_advance_payme
 import 'package:hr_app/manager_events_screen/view/manager_events_screen_view.dart';
 import 'package:hr_app/manager_notification_screen/view/manager_notification_screen_view.dart';
 import 'package:hr_app/notification_screen/view/notification_screen_view.dart';
+import 'package:hr_app/password_edit_screen/view/password_edit_screen_view.dart';
 import 'package:hr_app/phone_info_edit_screen/view/phone_info_edit_screen_view.dart';
 import 'package:hr_app/profile_screen/view/profile_screen_view.dart';
 import 'package:hr_app/signup_screen/view/signup_screen_view.dart';
@@ -49,6 +50,8 @@ class AppRoutes {
   static const NOTIFICATON_SCREEN_PATH = "/NotificationScreenPath";
   static const MANAGER_NOTIFICATON_SCREEN_PATH = "/ManagerNotificationScreenPath";
   static const TASK_MANAGER_SCREEN_PATH = "/TaskManagerScreenPath";
+  static const PASSWORD_EDIT_SCREEN_PATH = "/passwordEditScreenPath";
+
 
 
 
@@ -102,6 +105,8 @@ class AppRoutes {
     getPage(() => const NotificationScreenView(), NOTIFICATON_SCREEN_PATH),
     getPage(() => const ManagerNotificationScreenView(), MANAGER_NOTIFICATON_SCREEN_PATH),
     getPage(() => const TaskManagerScreenView(), TASK_MANAGER_SCREEN_PATH),
+    getPage(() => const PasswordEditScreenView(), PASSWORD_EDIT_SCREEN_PATH),
+
 
 
 

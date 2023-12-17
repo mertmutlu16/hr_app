@@ -14,6 +14,7 @@ import 'package:hr_app/manager_advance_payment_screen/view_model/manager_advance
 import 'package:hr_app/manager_events_screen/view_model/manager_events_screen_view_model.dart';
 import 'package:hr_app/manager_notification_screen/view_model/manager_notification_screen_view_model.dart';
 import 'package:hr_app/notification_screen/view_model/notification_screen_view_model.dart';
+import 'package:hr_app/password_edit_screen/view_model/password_edit_screen_view_model.dart';
 import 'package:hr_app/phone_info_edit_screen/view_model/phone_info_edit_screen_view_model.dart';
 import 'package:hr_app/signup_screen/view_model/signup_screen_view_model.dart';
 import 'package:hr_app/task_manager_screen/view_model/task_manager_screen_view_model.dart';
@@ -39,6 +40,8 @@ void setupLocator(){
   locator.registerLazySingleton<NotificationScreenViewModel>(() => NotificationScreenViewModel());
   locator.registerLazySingleton<ManagerNotificationScreenViewModel>(() => ManagerNotificationScreenViewModel());
   locator.registerLazySingleton<TaskManagerScreenViewModel>(() => TaskManagerScreenViewModel());
+  locator.registerLazySingleton<PasswordEditScreenViewModel>(() => PasswordEditScreenViewModel());
+
 
 
 

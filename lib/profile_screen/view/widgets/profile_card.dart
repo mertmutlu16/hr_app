@@ -91,11 +91,13 @@ class _ProfileCardState extends State<ProfileCard> {
             title: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text("Bursa"),
+                Text("**password**"),
               ],
             ),
             trailing: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.edit_outlined)),
+                onPressed: () {
+                  Get.toNamed(AppRoutes.PASSWORD_EDIT_SCREEN_PATH);
+                }, icon: const Icon(Icons.edit_outlined)),
           ),
         ),
         Card(

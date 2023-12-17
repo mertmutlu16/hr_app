@@ -21,7 +21,6 @@ class _AdvancePaymentHistoryState extends State<AdvancePaymentHistory> {
   final GenerateMonthAndYear _generateMonthAndYear = GenerateMonthAndYear();
   bool _customIcon = false;
 
-
   bool isFirstTime = true;
 
   @override

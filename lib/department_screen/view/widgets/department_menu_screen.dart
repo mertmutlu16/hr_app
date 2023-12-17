@@ -33,7 +33,6 @@ class _DepartmentMenuScreenState extends State<DepartmentMenuScreen> {
       setState(() {
         departmentScreenViewModel.usedDepartments.clear();
         departmentScreenViewModel.getAllUsedDepartments();
-
       });
     }
     super.didChangeDependencies();
@@ -49,44 +48,49 @@ class _DepartmentMenuScreenState extends State<DepartmentMenuScreen> {
         SizedBox(
           height: 66.h,
           child: Observer(builder: (_) {
-            return GridView.builder(
-                
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1,
-                  crossAxisSpacing:
-                      1.h, // İki eleman arasındaki yatay boşluk
-                  mainAxisSpacing:
-                      1.h, // İki eleman arasındaki dikey boşluk
+            if (departmentScreenViewModel.usedDepartments.isEmpty) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Color.fromARGB(1000, 241, 0, 77)),
                 ),
-                itemCount: departmentScreenViewModel.usedDepartments.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Get.toNamed(AppRoutes.DEPARTMENT_DETAIL_SCREEN_PATH,
-                          arguments: departmentScreenViewModel
-                              .usedDepartments[index]);
-                    },
-                    child: Card(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            departmentScreenViewModel
-                                .usedDepartments[index],
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
+              );
+            } else {
+              return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1,
+                    crossAxisSpacing: 1.h, // İki eleman arasındaki yatay boşluk
+                    mainAxisSpacing: 1.h, // İki eleman arasındaki dikey boşluk
+                  ),
+                  itemCount: departmentScreenViewModel.usedDepartments.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.DEPARTMENT_DETAIL_SCREEN_PATH,
+                            arguments: departmentScreenViewModel
+                                .usedDepartments[index]);
+                      },
+                      child: Card(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              departmentScreenViewModel.usedDepartments[index],
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                });
+                    );
+                  });
+            }
           }),
         )
       ],

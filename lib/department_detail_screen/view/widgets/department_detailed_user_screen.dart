@@ -53,37 +53,49 @@ class _DepartmentDetaildeUserScreenState
         SizedBox(
           height: 72.h,
           child: Observer(builder: (_) {
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: departmentDetailScreenViewModel.userList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:  EdgeInsets.only(top: 3.h, bottom: 3.h),
-                    child: ListTile(
-                      title: Text(
-                        departmentDetailScreenViewModel.userList[index].fullname,
-                        style: TextStyle(fontSize: 14.sp , fontWeight: FontWeight.w500),
-                        textAlign: TextAlign.center,
+            if (departmentDetailScreenViewModel.userList.isEmpty) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Color.fromARGB(1000, 241, 0, 77)),
+                ),
+              );
+            } else {
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: departmentDetailScreenViewModel.userList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(top: 3.h, bottom: 3.h),
+                      child: ListTile(
+                        title: Text(
+                          departmentDetailScreenViewModel
+                              .userList[index].fullname,
+                          style: TextStyle(
+                              fontSize: 14.sp, fontWeight: FontWeight.w500),
+                          textAlign: TextAlign.center,
+                        ),
+                        subtitle: Column(
+                          children: [
+                            Text(
+                                "+90 ${departmentDetailScreenViewModel.userList[index].phoneNumber}",
+                                style: TextStyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w300),
+                                textAlign: TextAlign.center),
+                            Text(
+                                departmentDetailScreenViewModel
+                                    .userList[index].email,
+                                style: TextStyle(
+                                    fontSize: 12.sp,
+                                    fontWeight: FontWeight.w300),
+                                textAlign: TextAlign.center),
+                          ],
+                        ),
                       ),
-                      subtitle: Column  (
-                        children: [
-                          Text("+90 ${departmentDetailScreenViewModel
-                              .userList[index].phoneNumber}",
-                              style: TextStyle(fontSize: 12.sp , fontWeight: FontWeight.w300), 
-                          textAlign: TextAlign.center),
-                          Text(departmentDetailScreenViewModel
-                              .userList[index].email,
-                              style: TextStyle(fontSize: 12.sp , fontWeight: FontWeight.w300), 
-                          textAlign: TextAlign.center),
-                        ],
-                      ),
-                      
-                      
-                     
-                          
-                    ),
-                  );
-                });
+                    );
+                  });
+            }
           }),
         )
       ],

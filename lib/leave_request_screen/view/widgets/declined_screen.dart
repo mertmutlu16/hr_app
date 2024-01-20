@@ -86,7 +86,8 @@ class _DeclinedScreenState extends State<DeclinedScreen> {
                                     .declinedLeavesListByUser[index].reason} " ,
                                 style: TextStyle(
                                     fontSize: 11.0.sp,
-                                    fontWeight: FontWeight.w500),),
+                                    fontWeight: FontWeight.w500),
+                                    textAlign: TextAlign.center,),
                               ),
 
                               Padding(

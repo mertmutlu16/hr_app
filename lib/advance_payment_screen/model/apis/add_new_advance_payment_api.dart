@@ -1,3 +1,4 @@
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -14,7 +15,7 @@ class AddNewAdvancePaymentApi {
     String fullName,
   ) async {
     var url =
-        "http://192.168.1.219:44320/api/advancePayments/createNewAdvancePayment";
+        "${MyLocalIp().myLocalIpBase}/api/advancePayments/createNewAdvancePayment";
 
     var advancePaymentModel = {
       "AdvanceAmount": advanceAmount,

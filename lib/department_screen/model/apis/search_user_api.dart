@@ -3,11 +3,13 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
+import '../../../utils/config/localip.dart';
+
 
 class SearchUserApi {
   Future<List<Users>>  searchUserApi(String userName) async{
 
-    var url ="http://192.168.1.219:44320/api/users/getSearchedUsers";
+    var url ="${MyLocalIp().myLocalIpBase}/api/users/getSearchedUsers";
 
      var userModel = {
       "Email": "",

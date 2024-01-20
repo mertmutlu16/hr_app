@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 
 class UpdatePhoneNumberApi {
@@ -6,7 +7,7 @@ class UpdatePhoneNumberApi {
     int id,
     String phoneNumber,
   ) async {
-    var url = "http://192.168.1.219:44320/api/users/updateUserPhoneNumber/$id";
+    var url = "${MyLocalIp().myLocalIpBase}/api/users/updateUserPhoneNumber/$id";
 
     var userModel = {
       "Email": "",

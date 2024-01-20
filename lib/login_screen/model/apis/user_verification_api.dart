@@ -1,9 +1,11 @@
 import 'dart:convert';
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 
 class UserVerificationApi {
   Future userVerify(String email, String password) async {
-    var url = "http://192.168.1.219:44320/api/users/userVerification";
+    
+    var url = "${MyLocalIp().myLocalIpBase}/api/users/userVerification";
     var userModel = {
       "Email": email,
       "Fullname": "",

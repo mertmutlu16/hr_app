@@ -1,11 +1,12 @@
 
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 
 class EventDeleteApi{
 
   Future<bool> eventDeleteApi(int eventId) async{
 
-    var url = "http://192.168.1.219:44320/api/events/deleteEvent/$eventId";
+    var url = "${MyLocalIp().myLocalIpBase}/api/events/deleteEvent/$eventId";
 
     var response = await http.delete(Uri.parse(url));
 

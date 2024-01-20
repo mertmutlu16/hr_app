@@ -2,11 +2,13 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
+import '../../../utils/config/localip.dart';
+
 class  GetAllEventsApi{
 
   Future<List> getAllEventsApi() async {
 
-    var url = "http://192.168.1.219:44320/api/events/getAllEvents";
+    var url = "${MyLocalIp().myLocalIpBase}/api/events/getAllEvents";
 
     var response = await http.get(Uri.parse(url));
 

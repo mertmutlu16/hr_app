@@ -2,12 +2,14 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
+import '../../../utils/config/localip.dart';
+
 
 class DepartmentApi{
 
   Future<List<String>> departmentApi() async {
 
-    var url = "http://192.168.1.219:44320/api/users/getUsedDepartments";
+    var url = "${MyLocalIp().myLocalIpBase}/api/users/getUsedDepartments";
 
     var response = await http.get(Uri.parse(url));
 

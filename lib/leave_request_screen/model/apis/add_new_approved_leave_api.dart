@@ -1,6 +1,8 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../../../utils/config/localip.dart';
+
 class AddNewApprovedLeaveApi {
   Future addNewApprovedLeaveApi(
     String reason,
@@ -15,7 +17,7 @@ class AddNewApprovedLeaveApi {
     String fullName,
   ) async {
     var url =
-        "http://192.168.1.219:44320/api/approvedLeaves/createNewApprovedLeave";
+        "${MyLocalIp().myLocalIpBase}/api/approvedLeaves/createNewApprovedLeave";
 
     var approvedLeaveModel = {
       "Reason": reason,

@@ -1,3 +1,4 @@
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 
 import 'dart:convert';
@@ -5,7 +6,7 @@ import 'dart:convert';
 class GetAllPendingLeavesApi {
   Future<List> getAllPendingLeavesApi() async {
     var url =
-        "http://192.168.1.219:44320/api/pendingLeaves/getAllPendingLeaves";
+        "${MyLocalIp().myLocalIpBase}/api/pendingLeaves/getAllPendingLeaves";
 
     var response = await http.get(Uri.parse(url));
     

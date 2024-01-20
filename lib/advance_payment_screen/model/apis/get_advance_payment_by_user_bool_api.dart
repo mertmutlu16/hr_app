@@ -1,9 +1,11 @@
 import 'package:http/http.dart' as http;
 
+import '../../../utils/config/localip.dart';
+
 class GetAdvancePaymentByUserBoolApi {
   Future getAdvancePaymentByUserBoolApi(int userId) async {
     var url =
-        "http://192.168.1.219:44320/api/advancePayments/getAdvancePaymentByUserBool/$userId";
+        "${MyLocalIp().myLocalIpBase}/api/advancePayments/getAdvancePaymentByUserBool/$userId";
 
     var response = await http.get(Uri.parse(url));
 

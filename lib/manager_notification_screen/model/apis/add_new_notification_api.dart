@@ -1,3 +1,4 @@
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -8,7 +9,7 @@ class AddNewNotificationApi {
       int notificationSenderId,
       String notificationSenderFullname,
       String notificationSenderDepartment) async {
-    var url = "http://192.168.1.219:44320/api/notifications/createNewNotification";
+    var url = "${MyLocalIp().myLocalIpBase}/api/notifications/createNewNotification";
 
     var notificationModel = {
       "NotificationDescription": notificationDescription,

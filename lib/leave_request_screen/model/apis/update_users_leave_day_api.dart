@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:hr_app/utils/config/localip.dart';
 import 'package:http/http.dart' as http;
 
 class UpdateUsersLeaveDayApi {
   Future updateLeaveDayApi(int id, int leaveDay) async {
-    var url = "http://192.168.1.219:44320/api/users/updateUserLeaveDay/$id";
+    var url = "${MyLocalIp().myLocalIpBase}/api/users/updateUserLeaveDay/$id";
 
     var userModel = {
       "Email": "",

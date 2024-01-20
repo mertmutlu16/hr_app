@@ -1,12 +1,14 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../../utils/config/localip.dart';
+
 class UpdateFullnameApi {
   Future updateFullname(
     int id,
     String fullname,
   ) async {
-    var url = "http://192.168.1.219:44320/api/users/updateUserFullname/$id";
+    var url = "${MyLocalIp().myLocalIpBase}/api/users/updateUserFullname/$id";
 
     var userModel = {
       "Email": "",

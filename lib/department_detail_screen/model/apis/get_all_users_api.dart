@@ -3,11 +3,13 @@ import 'package:http/http.dart' as http;
 
 import 'dart:convert';
 
+import '../../../utils/config/localip.dart';
+
 //Getting all users by departments 
 
 class GetAllUsersApi {
   Future<List<Users>> getAllUsersApi(String departmentName) async {
-    var url = "http://192.168.1.219:44320/api/users/getAllUsersByDepartment/$departmentName";
+    var url = "${MyLocalIp().myLocalIpBase}/api/users/getAllUsersByDepartment/$departmentName";
 
     var response = await http.post(Uri.parse(url));
 
